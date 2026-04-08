@@ -1,0 +1,36 @@
+{
+  "source": "self.__next_f.push payload from https://ideacheck.cc/",
+  "captured_at": "2026-04-08",
+  "notes": "Component IDs are RSC client-reference markers (I[<chunk-id>, [<chunk-files>], <export-name>]).",
+  "page_components": [
+    { "ref": "$L4", "id": 38829, "name": "Hero", "kind": "client" },
+    { "ref": "$L5", "id": 68975, "name": "InteractiveDemo", "kind": "client" },
+    { "ref": "$L6", "id": 18639, "name": "DataSources", "kind": "client" },
+    { "ref": "$L7", "id": 50512, "name": "Pricing", "kind": "client" },
+    { "ref": "$L8", "id": 26697, "name": "FAQ", "kind": "client" }
+  ],
+  "shell_components": [
+    { "ref": "$L12", "id": 24528, "name": "LocaleProvider", "kind": "provider" },
+    { "ref": "$L13", "id": 92654, "name": "AuthProvider", "kind": "provider" },
+    { "ref": "$L16", "id": 22138, "name": "Link (next/link default export)", "kind": "primitive" },
+    { "ref": "$L17", "id": 79871, "name": "Image (next/image default export)", "kind": "primitive" },
+    { "ref": "$L18", "id": 87134, "name": "LanguageSwitcher", "kind": "client" },
+    { "ref": "$L19", "id": 67175, "name": "IconMark", "kind": "icon" },
+    { "ref": "$La", "id": 25531, "name": "OutletBoundary", "kind": "boundary" },
+    { "ref": "$Ld", "id": 25531, "name": "ViewportBoundary", "kind": "boundary" },
+    { "ref": "$Lf", "id": 25531, "name": "MetadataBoundary", "kind": "boundary" }
+  ],
+  "static_subtrees": {
+    "header_nav": "ref $3 — sticky top-0 z-50 w-full border-b border-gray-950/5 bg-white/80 backdrop-blur-md",
+    "footer": "ref $9 — border-t border-gray-950/5 px-6 py-10",
+    "page_order": ["nav ($3)", "Hero ($L4)", "InteractiveDemo ($L5)", "DataSources ($L6)", "Pricing ($L7)", "FAQ ($L8)", "footer ($9)"]
+  },
+  "shared_chunks": [
+    "/_next/static/chunks/0y~2fdjrei_x4.js",
+    "/_next/static/chunks/0sb3q3mewmjjl.js",
+    "/_next/static/chunks/04~1xt_2_4sdp.js",
+    "/_next/static/chunks/01ysuzph9d_d2.js",
+    "/_next/static/chunks/10.bkg6_hbec_.js",
+    "/_next/static/chunks/17r8~3es_404n.js"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "source": "Tailwind responsive prefixes observed in raw/dom.html",
+  "captured_at": "2026-04-08",
+  "framework": "Tailwind CSS (default breakpoint scale)",
+  "breakpoints": {
+    "sm": { "min_width_px": 640, "css": "@media (min-width: 640px)" },
+    "md": { "min_width_px": 768, "css": "@media (min-width: 768px)" },
+    "lg": { "min_width_px": 1024, "css": "@media (min-width: 1024px)" },
+    "xl": { "min_width_px": 1280, "css": "@media (min-width: 1280px)" },
+    "2xl": { "min_width_px": 1536, "css": "@media (min-width: 1536px)" }
+  },
+  "observed_in_capture": [
+    {
+      "prefix": "sm",
+      "min_width_px": 640,
+      "utilities": [
+        { "class": "sm:flex", "context": "nav primary links — hidden on mobile, flex on >=640px" },
+        { "class": "sm:flex-row", "context": "footer container — column on mobile, row on >=640px" }
+      ]
+    }
+  ],
+  "not_observed_in_ssr_shell": ["md:*", "lg:*", "xl:*", "2xl:*"],
+  "note": "Inner page sections (Hero/Demo/DataSources/Pricing/FAQ) are client-rendered; their breakpoint usage is not captured here and likely includes md/lg variants."
+}

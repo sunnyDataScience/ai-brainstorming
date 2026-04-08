@@ -1,0 +1,54 @@
+{
+  "source_url": "https://ideacheck.cc/",
+  "captured_at": "2026-04-08",
+  "lang": "zh-Hant",
+  "charset": "utf-8",
+  "viewport": "width=device-width, initial-scale=1",
+  "title": "IdeaCheck — 你的點子能活多久？",
+  "description": "輸入你的產品點子，AI 從 7 個面向打分數，告訴你這個點子會怎麼死。",
+  "open_graph": {
+    "og:title": "IdeaCheck — 你的點子能活多久？",
+    "og:description": "輸入你的產品點子，AI 從 7 個面向打分數，告訴你這個點子會怎麼死。",
+    "og:url": "https://ideacheck.cc",
+    "og:site_name": "IdeaCheck",
+    "og:locale": "zh_TW",
+    "og:image": "https://ideacheck.cc/og-image.png",
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "IdeaCheck — AI 創業點子驗證工具",
+    "og:type": "website"
+  },
+  "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "IdeaCheck — 你的點子能活多久？",
+    "twitter:description": "輸入你的產品點子，AI 從 7 個面向打分數，告訴你這個點子會怎麼死。",
+    "twitter:image": "https://ideacheck.cc/og-image.png"
+  },
+  "icons": [
+    {
+      "rel": "icon",
+      "href": "/favicon.ico?favicon.0tdrde6t7jpyv.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "preload": [
+    {
+      "rel": "preload",
+      "as": "style",
+      "href": "/_next/static/chunks/021hm9y1r3r_x.css"
+    },
+    {
+      "rel": "preload",
+      "as": "font",
+      "href": "/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+      "type": "font/woff2",
+      "crossOrigin": ""
+    }
+  ],
+  "framework_signals": {
+    "next_build_id": "M61bP0CPahF6DmBfa7TKN",
+    "body_class": "inter_5972bc34-module__OU16Qa__className min-h-screen bg-background antialiased",
+    "stack": "Next.js App Router (RSC) + Tailwind + next/font (Inter)"
+  }
+}

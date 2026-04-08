@@ -1,0 +1,166 @@
+{
+  "source": "Tailwind utility classes observed in raw/dom.html (SSR shell only — header + footer)",
+  "captured_at": "2026-04-08",
+  "note": "Frequency counted from SSR HTML. Inner sections (Hero/Demo/Pricing/FAQ) are client-rendered and not represented here.",
+  "tokens": {
+    "color": {
+      "color.brand.primary": {
+        "tailwind": ["bg-indigo-600", "hover:bg-indigo-700"],
+        "frequency": 1,
+        "usage": ["登入 button"],
+        "confidence": "high"
+      },
+      "color.surface.background": {
+        "tailwind": ["bg-background"],
+        "frequency": 1,
+        "css_var": "unknown — likely defined in /_next/static/chunks/021hm9y1r3r_x.css",
+        "usage": ["body"],
+        "confidence": "medium"
+      },
+      "color.surface.nav": {
+        "tailwind": ["bg-white/80", "backdrop-blur-md"],
+        "frequency": 1,
+        "usage": ["sticky nav"],
+        "confidence": "high"
+      },
+      "color.text.primary": {
+        "tailwind": ["text-gray-950"],
+        "frequency": 3,
+        "usage": ["brand wordmark", "nav hover"],
+        "confidence": "high"
+      },
+      "color.text.secondary": {
+        "tailwind": ["text-gray-500"],
+        "frequency": 4,
+        "usage": ["primary nav links"],
+        "confidence": "high"
+      },
+      "color.text.muted": {
+        "tailwind": ["text-gray-400"],
+        "frequency": 8,
+        "usage": ["footer nav links", "copyright"],
+        "confidence": "high"
+      },
+      "color.text.muted.hover": {
+        "tailwind": ["hover:text-gray-600"],
+        "frequency": 7,
+        "usage": ["footer link hover"],
+        "confidence": "high"
+      },
+      "color.text.inverse": {
+        "tailwind": ["text-white"],
+        "frequency": 1,
+        "usage": ["登入 button label"],
+        "confidence": "high"
+      },
+      "color.border.subtle": {
+        "tailwind": ["border-b border-gray-950/5", "border-t border-gray-950/5"],
+        "frequency": 2,
+        "usage": ["nav bottom border", "footer top border"],
+        "confidence": "high"
+      }
+    },
+    "layout": {
+      "container.max": {
+        "tailwind": ["max-w-6xl"],
+        "frequency": 2,
+        "computed": "72rem (1152px)",
+        "usage": ["nav inner", "footer inner"],
+        "confidence": "high"
+      },
+      "container.center": {
+        "tailwind": ["mx-auto"],
+        "frequency": 2,
+        "confidence": "high"
+      },
+      "spacing.section.x": {
+        "tailwind": ["px-6"],
+        "frequency": 2,
+        "computed": "1.5rem",
+        "confidence": "high"
+      },
+      "spacing.nav.y": {
+        "tailwind": ["py-3"],
+        "frequency": 1,
+        "computed": "0.75rem",
+        "confidence": "high"
+      },
+      "spacing.footer.y": {
+        "tailwind": ["py-10"],
+        "frequency": 1,
+        "computed": "2.5rem",
+        "confidence": "high"
+      }
+    },
+    "radii": {
+      "radius.button": {
+        "tailwind": ["rounded-lg"],
+        "frequency": 1,
+        "computed": "0.5rem",
+        "confidence": "high"
+      }
+    },
+    "typography": {
+      "font.family.sans": {
+        "tailwind": ["inter_5972bc34-module__OU16Qa__className"],
+        "source": "next/font (Inter)",
+        "preload": "/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+        "confidence": "high"
+      },
+      "font.size.sm": {
+        "tailwind": ["text-sm"],
+        "frequency": 12,
+        "confidence": "high"
+      },
+      "font.size.base": {
+        "tailwind": ["text-base"],
+        "frequency": 1,
+        "usage": ["brand wordmark in nav"],
+        "confidence": "high"
+      },
+      "font.weight.medium": {
+        "tailwind": ["font-medium"],
+        "frequency": 5,
+        "confidence": "high"
+      },
+      "font.weight.bold": {
+        "tailwind": ["font-bold"],
+        "frequency": 2,
+        "confidence": "high"
+      },
+      "tracking.tight": {
+        "tailwind": ["tracking-tight"],
+        "frequency": 1,
+        "confidence": "high"
+      },
+      "antialiasing": {
+        "tailwind": ["antialiased"],
+        "frequency": 1,
+        "confidence": "high"
+      }
+    },
+    "effects": {
+      "transition.colors": {
+        "tailwind": ["transition-colors", "transition"],
+        "frequency": 12,
+        "confidence": "high"
+      },
+      "blur.nav": {
+        "tailwind": ["backdrop-blur-md"],
+        "frequency": 1,
+        "confidence": "high"
+      }
+    },
+    "z_index": {
+      "z.sticky.nav": {
+        "tailwind": ["z-50"],
+        "frequency": 1,
+        "confidence": "high"
+      }
+    }
+  },
+  "unresolved": [
+    "bg-background → CSS variable not visible at capture (defined in compiled CSS chunk 021hm9y1r3r_x.css)",
+    "Hero / Demo / Pricing / FAQ tokens — require headless render"
+  ]
+}
