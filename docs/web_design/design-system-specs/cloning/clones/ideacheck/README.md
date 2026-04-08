@@ -1,6 +1,6 @@
 # Clone Target: ideacheck
 
-> Capture & Extract artifact root for ideacheck.cc — a Taiwanese AI-powered startup-idea-validation SaaS.
+> `ideacheck.cc` 的 Capture & Extract artifact 根目錄 — 一個台灣的 AI 驅動 startup idea validation SaaS。
 
 ---
 

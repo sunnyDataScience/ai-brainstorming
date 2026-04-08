@@ -5,7 +5,7 @@
 來源：https://ideacheck.cc/
 擷取日期：2026-04-08
 
-> **Note**: Site shares codebase with shipyouridea.today — L0 values identical except where documented.
+> **註記**：本站與 shipyouridea.today 共用 codebase — L0 數值除特別標註外完全相同。
 
 ---
 

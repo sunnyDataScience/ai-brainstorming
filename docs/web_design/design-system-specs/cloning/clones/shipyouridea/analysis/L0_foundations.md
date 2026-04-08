@@ -7,7 +7,7 @@
 擷取方式：`curl -sL -A "Mozilla/5.0" https://shipyouridea.today/`（靜態 HTML）
 
 > **共享代碼庫聲明**
-> Shares Next.js codebase with ideacheck.cc. L0 values are effectively identical. See _comparison doc for delta summary. Only observable delta in L0 scope: favicon sizes (64x64 vs 48x48) — not a token-level difference.
+> 與 ideacheck.cc 共用 Next.js codebase。L0 數值實質上完全相同。delta 摘要請參考 _comparison 文件。L0 範圍內唯一可觀察到的 delta：favicon 尺寸（64x64 vs 48x48）— 並非 token 層級的差異。
 
 注意：Hero / Demo / Pricing / FAQ 內層文案為 client-rendered，本文件僅基於初始 HTML 中可觀察到的 token。
 

@@ -2,7 +2,7 @@
 
 > 每個複製專案的入口檔案。先填這份再開始六階段。
 
-> ⚠️ **This site shares a Next.js codebase with ideacheck.cc** — same font file hash (`83afe278b6a6bb3c`), same Tailwind class patterns, same component registry shape, same `LanguageSwitcher`, same `© 2026` footer copy. The interesting output of this clone is the **comparative differentiation** against ideacheck.cc, not the raw structural capture.
+> ⚠️ **本站與 ideacheck.cc 共用同一份 Next.js codebase** — 相同的 font 檔案 hash（`83afe278b6a6bb3c`）、相同的 Tailwind class patterns、相同的 component registry 形狀、相同的 `LanguageSwitcher`、相同的 `© 2026` footer copy。此 clone 有價值的產出是**與 ideacheck.cc 的 comparative differentiation**，而非原始結構 capture。
 
 ---
 
@@ -67,12 +67,12 @@
 
 ## Files
 
-| Path | Purpose |
+| Path | 用途 |
 |---|---|
-| `raw/dom.html` | Captured HTML (HTTP 500 shell + full RSC stream) |
-| `raw/html-head-metadata.json` | Parsed `<head>` metadata |
-| `raw/rsc-components.json` | Component registry parsed from RSC payload |
-| `extracted/dom-tree.md` | Simplified semantic DOM tree |
-| `extracted/css-vars.json` | Tailwind utility classes → inferred design tokens (with frequency) |
-| `extracted/media-queries.json` | Tailwind breakpoints actually used |
-| `extracted/assets-inventory.md` | Fonts, logos, icons, OG, third-party |
+| `raw/dom.html` | 擷取下來的 HTML（HTTP 500 shell + 完整 RSC stream） |
+| `raw/html-head-metadata.json` | 解析過的 `<head>` metadata |
+| `raw/rsc-components.json` | 從 RSC payload 解析出的 component registry |
+| `extracted/dom-tree.md` | 簡化的語意 DOM 樹 |
+| `extracted/css-vars.json` | Tailwind utility classes → 推導出的 design tokens（含使用次數） |
+| `extracted/media-queries.json` | 實際使用到的 Tailwind breakpoints |
+| `extracted/assets-inventory.md` | Fonts、logos、icons、OG、第三方資源 |

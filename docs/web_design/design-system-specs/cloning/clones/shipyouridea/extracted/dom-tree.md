@@ -1,9 +1,9 @@
-# DOM Tree (Simplified Semantic) — shipyouridea.today
+# DOM Tree（簡化語意）— shipyouridea.today
 
-> Source: `raw/dom.html` (captured 2026-04-08).
-> Note: The captured HTTP response was a 500 `__next_error__` shell, but the RSC stream still serialized the full layout chrome (nav + footer) plus a registry of the four page-level client components. Inner copy of Hero/Demo/Pricing/FAQ is client-only and therefore absent from this tree.
+> 來源：`raw/dom.html`（擷取於 2026-04-08）。
+> 註記：擷取到的 HTTP 回應是 500 `__next_error__` shell，但 RSC stream 仍然序列化了完整的 layout chrome（nav + footer）以及 4 個 page-level client component 的 registry。Hero/Demo/Pricing/FAQ 的內部 copy 為 client-only，因此不在這棵樹中。
 
-## Top-level layout
+## 頂層 layout
 
 ```
 <html lang="zh-Hant">
@@ -16,7 +16,7 @@
                 └── FOOTER             ← rendered in HTML
 ```
 
-## HEADER / NAV (rendered in HTML, confidence HIGH)
+## HEADER / NAV（於 HTML 中渲染，信心度 HIGH）
 
 ```
 <nav class="sticky top-0 z-50 w-full border-b border-gray-950/5 bg-white/80 backdrop-blur-md">
@@ -41,9 +41,9 @@
 </nav>
 ```
 
-## MAIN (client-rendered, confidence LOW)
+## MAIN（client-rendered，信心度 LOW）
 
-Component stack as registered in the RSC payload (render order):
+依 RSC payload 中註冊順序列出的 component stack（渲染順序）：
 
 ```
 <main>
@@ -54,12 +54,12 @@ Component stack as registered in the RSC payload (render order):
 </main>
 ```
 
-> CRITICAL FINDING: This site does NOT register a `DataSources` section.
-> The companion site ideacheck.cc registers Hero → DataSources → InteractiveDemo → Pricing → FAQ.
-> shipyouridea.today registers only Hero → InteractiveDemo → Pricing → FAQ.
-> Verified via: `grep -c '"DataSources"' raw/dom.html` → 0.
+> 重要發現：本站**未**註冊 `DataSources` section。
+> 姊妹站 ideacheck.cc 註冊的是 Hero → DataSources → InteractiveDemo → Pricing → FAQ。
+> shipyouridea.today 只註冊 Hero → InteractiveDemo → Pricing → FAQ。
+> 驗證方式：`grep -c '"DataSources"' raw/dom.html` → 0。
 
-## FOOTER (rendered in HTML, confidence HIGH)
+## FOOTER（於 HTML 中渲染，信心度 HIGH）
 
 ```
 <footer class="border-t border-gray-950/5 px-6 py-10">
@@ -80,17 +80,17 @@ Component stack as registered in the RSC payload (render order):
 </footer>
 ```
 
-## Section confidence summary
+## 各 Section 信心度摘要
 
-| Section          | Source            | Confidence |
+| Section          | 來源              | 信心度     |
 |------------------|-------------------|------------|
 | Nav              | HTML              | HIGH       |
-| Hero             | RSC registry only | LOW (TBD)  |
-| InteractiveDemo  | RSC registry only | LOW (TBD)  |
-| Pricing          | RSC registry only | LOW (TBD)  |
-| FAQ              | RSC registry only | LOW (TBD)  |
+| Hero             | 僅 RSC registry   | LOW (TBD)  |
+| InteractiveDemo  | 僅 RSC registry   | LOW (TBD)  |
+| Pricing          | 僅 RSC registry   | LOW (TBD)  |
+| FAQ              | 僅 RSC registry   | LOW (TBD)  |
 | Footer           | HTML              | HIGH       |
 
-## Notable missing element vs ideacheck.cc
+## 與 ideacheck.cc 的明顯缺失元素
 
-- No `DataSources` component anywhere in the registry — this is the single largest structural difference between the two sister sites.
+- registry 中任何地方都沒有 `DataSources` 元件 — 這是兩個姊妹站之間單一最大的結構差異。

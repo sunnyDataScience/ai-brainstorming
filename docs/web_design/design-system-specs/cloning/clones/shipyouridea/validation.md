@@ -1,9 +1,9 @@
 # Validation — shipyouridea
 
-> Source: https://shipyouridea.today/
-> Date: 2026-04-08
-> Spec under review: `clones/shipyouridea/spec/inspired-design-system.md` + `differentiation.md`
-> Reference: `checklists/validation_checklist.md`
+> 來源：https://shipyouridea.today/
+> 日期：2026-04-08
+> 受審 spec：`clones/shipyouridea/spec/inspired-design-system.md` + `differentiation.md`
+> 參考：`checklists/validation_checklist.md`
 
 ---
 

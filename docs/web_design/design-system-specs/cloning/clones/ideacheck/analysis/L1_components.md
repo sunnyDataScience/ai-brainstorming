@@ -1,26 +1,26 @@
 # L1 Components — ideacheck
 
-> Source: static HTML / RSC payload from `https://ideacheck.cc/`
-> Method: server-rendered markup observation only (no DOM/CSSOM)
-> Date: 2026-04-08
+> 來源：`https://ideacheck.cc/` 的 static HTML / RSC payload
+> 方法：僅觀察 server-rendered markup（無 DOM/CSSOM）
+> 日期：2026-04-08
 
-> **Note**: ideacheck.cc shares its Next.js codebase with shipyouridea.today.
-> Components are nearly identical; see `_comparison` doc for logo size deltas
-> (ideacheck uses 28px/24px logo; nav links include 服務 and 數據來源).
+> **註記**：ideacheck.cc 與 shipyouridea.today 共用同一份 Next.js codebase。
+> 元件幾乎完全相同；logo 尺寸差異請參考 `_comparison` 文件
+> （ideacheck 使用 28px/24px logo；nav 連結包含「服務」與「數據來源」）。
 
 ---
 
 ## Button / Primary (Login)
 
-Top-right CTA in the header. Single observed instance routes to `/login`.
+位於 header 右上角的 CTA。唯一觀察到的實例導向 `/login`。
 
-### Tailwind classes (verbatim)
+### Tailwind classes（原樣）
 
 ```
 inline-flex h-8 items-center rounded-lg bg-indigo-600 px-4 text-sm font-medium text-white transition hover:bg-indigo-700
 ```
 
-### Token decomposition
+### Token 拆解
 
 | Property | Value |
 |---|---|
@@ -35,73 +35,73 @@ inline-flex h-8 items-center rounded-lg bg-indigo-600 px-4 text-sm font-medium t
 | color | white |
 | transition | all (transition) |
 
-### States observed
+### 觀察到的狀態
 - default
-- hover (class-driven)
+- hover（由 class 驅動）
 
-### Variants observed
-- primary only (no secondary/ghost in static HTML)
+### 觀察到的變體
+- 僅 primary（static HTML 中無 secondary/ghost）
 
-### Confidence
-**HIGH** — class string and DOM position both observable in RSC payload.
+### 信心度
+**HIGH** — class string 與 DOM 位置皆可在 RSC payload 中觀察到。
 
 ---
 
 ## Nav / Top
 
-Sticky header containing logo (left), nav links (center), login + LanguageSwitcher (right).
+Sticky header，包含 logo（左）、nav 連結（中）、登入按鈕 + LanguageSwitcher（右）。
 
-### Tailwind classes (verbatim)
+### Tailwind classes（原樣）
 
-Outer:
+Outer：
 ```
 sticky top-0 z-50 w-full border-b border-gray-950/5 bg-white/80 backdrop-blur-md
 ```
 
-Inner grid:
+Inner grid：
 ```
 mx-auto grid max-w-6xl grid-cols-3 items-center px-6 py-3
 ```
 
-Center link cluster:
+Center link cluster：
 ```
 hidden sm:flex gap-8
 ```
 
-### Structure
+### 結構
 
-| Slot | Content |
+| Slot | 內容 |
 |---|---|
-| left | Logo (28x28) + brand text |
-| center | Nav links (hidden < sm) |
-| right | Login button + LanguageSwitcher |
+| left | Logo (28x28) + 品牌文字 |
+| center | Nav 連結（< sm 時隱藏） |
+| right | 登入按鈕 + LanguageSwitcher |
 
-### States
-- default (no observable scroll/hover variant in HTML)
+### 狀態
+- default（HTML 中無可觀察的 scroll/hover 變體）
 
-### Confidence
-**HIGH** — full class strings + slot structure visible in RSC payload.
+### 信心度
+**HIGH** — 完整 class strings 與 slot 結構皆可在 RSC payload 中觀察到。
 
 ---
 
 ## Footer
 
-### Tailwind classes (verbatim)
+### Tailwind classes（原樣）
 
-Outer:
+Outer：
 ```
 border-t border-gray-950/5 px-6 py-10
 ```
 
-Inner row:
+Inner row：
 ```
 mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row
 ```
 
-### Content
+### 內容
 
-- Brand cluster: Logo (24x24) + brand text (`text-sm font-bold`)
-- Nav links (7 items, in observed order):
+- 品牌群組：Logo (24x24) + 品牌文字（`text-sm font-bold`）
+- Nav 連結（7 項，依觀察順序）：
   1. 服務
   2. 數據來源
   3. 價格
@@ -110,102 +110,101 @@ mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row
   6. 隱私權政策
   7. 服務條款
 
-### States
+### 狀態
 - default
 
-### Confidence
-**HIGH** — class strings and 7 link labels observable in static HTML.
+### 信心度
+**HIGH** — class strings 與 7 個連結標籤皆可在 static HTML 中觀察到。
 
 ---
 
 ## Nav Link
 
-Two contexts: header and footer. Both are anchor elements.
+兩種使用情境：header 與 footer。兩者皆為 anchor 元素。
 
-### Tailwind classes (verbatim)
+### Tailwind classes（原樣）
 
-Header variant:
+Header 變體：
 ```
 text-sm font-medium text-gray-500 transition-colors hover:text-gray-950
 ```
 
-Footer variant:
+Footer 變體：
 ```
 text-sm text-gray-400 transition-colors hover:text-gray-600
 ```
 
-### Variants
-- header (medium weight, gray-500 → gray-950)
-- footer (regular weight, gray-400 → gray-600)
+### 變體
+- header（medium weight，gray-500 → gray-950）
+- footer（regular weight，gray-400 → gray-600）
 
-### States
+### 狀態
 - default
-- hover (class-driven)
+- hover（由 class 驅動）
 
-### Confidence
+### 信心度
 **HIGH**
 
 ---
 
 ## Logo
 
-Image asset reused in nav and footer.
+圖片資產於 nav 與 footer 重複使用。
 
-### Source
+### 來源
 
 `/logo-v2.png`
 
-### Variants
+### 變體
 
-| Context | Width × Height | Label class |
+| 情境 | Width × Height | 標籤 class |
 |---|---|---|
 | Nav | 28 × 28 | `text-base font-bold` |
 | Footer | 24 × 24 | `text-sm font-bold` |
 
-### Notes
-- Brand asset — do **not** copy in clone implementations.
-- Size deltas vs shipyouridea.today are documented in the `_comparison` file.
+### 註記
+- 品牌資產 — clone 實作中**不得**複製。
+- 與 shipyouridea.today 的尺寸差異記錄於 `_comparison` 文件。
 
-### Confidence
+### 信心度
 **HIGH**
 
 ---
 
 ## LanguageSwitcher
 
-Client component referenced in the RSC payload (right slot of the header).
-Inner markup is hydrated client-side.
+於 RSC payload 中被引用的 client component（位於 header 右側 slot）。
+內部 markup 於 client-side 進行 hydrate。
 
-### Observable
-- Mount point exists in the right grid cell of `Nav / Top`.
+### 可觀察項目
+- `Nav / Top` 右側 grid cell 中的掛載點存在。
 
-### Not observable
-- Trigger button class strings
-- Dropdown panel structure
-- Locale list
+### 不可觀察項目
+- Trigger button 的 class strings
+- Dropdown panel 的結構
+- Locale 清單
 
-### Confidence
-**LOW** — presence only; structure not in static HTML.
+### 信心度
+**LOW** — 僅可確認存在；結構未出現在 static HTML 中。
 
 ---
 
 ## Hero / InteractiveDemo / DataSources / Pricing / FAQ / IconMark
 
-These component identifiers appear in the RSC component registry but render
-client-side or as client islands. Static HTML does not expose their internal
-structure.
+這些元件 identifier 出現在 RSC component registry 中，但以 client-side
+或 client islands 形式渲染。Static HTML 不暴露其內部結構。
 
-| Component | Static HTML evidence | Confidence |
+| Component | Static HTML 證據 | 信心度 |
 |---|---|---|
-| Hero | identifier in payload only | LOW |
-| InteractiveDemo | identifier in payload only | LOW |
-| DataSources | identifier in payload only | LOW |
-| Pricing | identifier in payload only | LOW |
-| FAQ | identifier in payload only | LOW |
-| IconMark | identifier in payload only | LOW |
+| Hero | 僅 payload 中有 identifier | LOW |
+| InteractiveDemo | 僅 payload 中有 identifier | LOW |
+| DataSources | 僅 payload 中有 identifier | LOW |
+| Pricing | 僅 payload 中有 identifier | LOW |
+| FAQ | 僅 payload 中有 identifier | LOW |
+| IconMark | 僅 payload 中有 identifier | LOW |
 
-> **Status**: client-rendered — structure not observable in static HTML.
-> Requires DOM-level capture (Playwright / browser snapshot) for L1 expansion.
+> **狀態**：client-rendered — 結構無法於 static HTML 中觀察。
+> 需 DOM-level capture（Playwright / browser snapshot）才能展開 L1。
 
 ---
 
@@ -214,12 +213,12 @@ structure.
 | 元件 | 信心度 | 來源 |
 |---|---|---|
 | Button / Primary | HIGH | RSC payload class string |
-| Nav / Top | HIGH | RSC payload structure + classes |
-| Footer | HIGH | RSC payload structure + classes |
+| Nav / Top | HIGH | RSC payload 結構 + classes |
+| Footer | HIGH | RSC payload 結構 + classes |
 | Nav Link (header) | HIGH | RSC payload class string |
 | Nav Link (footer) | HIGH | RSC payload class string |
-| Logo | HIGH | `<img>` src + dimensions |
-| LanguageSwitcher | LOW | mount point only |
+| Logo | HIGH | `<img>` src + 尺寸 |
+| LanguageSwitcher | LOW | 僅有掛載點 |
 | Hero | LOW | registry identifier |
 | InteractiveDemo | LOW | registry identifier |
 | DataSources | LOW | registry identifier |
@@ -229,13 +228,12 @@ structure.
 
 ---
 
-## Cross-site note
+## 跨站註記
 
-ideacheck.cc and shipyouridea.today share the same Next.js codebase.
-Components documented above are **nearly identical** to the sister site;
-the meaningful deltas are:
+ideacheck.cc 與 shipyouridea.today 共用同一份 Next.js codebase。
+上述記錄的元件與姊妹站**幾乎完全相同**；有意義的差異為：
 
-- Logo dimensions (28/24 here vs sister site values — see `_comparison`)
-- Nav link labels include `服務` and `數據來源`
+- Logo 尺寸（此處 28/24，姊妹站為其他值 — 詳見 `_comparison`）
+- Nav 連結標籤包含「服務」與「數據來源」
 
-See `clones/_comparison/` (when authored) for the full delta matrix.
+完整的 delta matrix 請參考 `clones/_comparison/`（待撰寫）。

@@ -1,8 +1,8 @@
 # Inspired Design System — shipyouridea
 
-> Source: https://shipyouridea.today/ （shared codebase with ideacheck.cc，lite 變體）
-> Aligned to: `docs/web_design/design-system-specs/00_foundations_spec.md`
-> Tag convention: `[inspired by: shipyouridea.today]` = 來源觀察值；`[original]` = 自己決定 / Tailwind 預設補洞
+> 來源：https://shipyouridea.today/（與 ideacheck.cc 共用 codebase，lite 變體）
+> 對齊：`docs/web_design/design-system-specs/00_foundations_spec.md`
+> 標記慣例：`[inspired by: shipyouridea.today]` = 來源觀察值；`[original]` = 自己決定 / Tailwind 預設補洞
 
 ---
 
