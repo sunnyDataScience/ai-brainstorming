@@ -1,0 +1,74 @@
+{
+  "source": "Tailwind utility classes observed in raw/dom.html (captured 2026-04-08). Inferred design tokens — the actual Tailwind config is bundled in /_next/static/chunks/08xfyi~fk9y64.css (not parsed here).",
+  "framework": "Tailwind CSS (utility-first)",
+  "font": {
+    "family_class": "inter_5972bc34-module__OU16Qa__className",
+    "inferred_family": "Inter (Next.js next/font local with stable hash 5972bc34 — same hash family observed on ideacheck.cc, confirming shared codebase)"
+  },
+  "observed_color_classes": {
+    "bg-background":     {"frequency": 1, "inferred_token": "color.background.base", "inferred_value": "#ffffff (theme background, light mode)"},
+    "bg-white/80":       {"frequency": 1, "inferred_token": "color.surface.nav-translucent", "inferred_value": "rgba(255,255,255,0.8)"},
+    "bg-indigo-600":     {"frequency": 1, "inferred_token": "color.brand.primary", "inferred_value": "#4f46e5"},
+    "hover:bg-indigo-700": {"frequency": 1, "inferred_token": "color.brand.primary.hover", "inferred_value": "#4338ca"},
+    "text-white":        {"frequency": 1, "inferred_token": "color.text.on-brand", "inferred_value": "#ffffff"},
+    "text-gray-950":     {"frequency": 3, "inferred_token": "color.text.heading", "inferred_value": "#030712"},
+    "hover:text-gray-950": {"frequency": 1, "inferred_token": "color.text.heading", "inferred_value": "#030712"},
+    "text-gray-500":     {"frequency": 1, "inferred_token": "color.text.muted", "inferred_value": "#6b7280"},
+    "text-gray-400":     {"frequency": 4, "inferred_token": "color.text.subtle", "inferred_value": "#9ca3af"},
+    "hover:text-gray-600": {"frequency": 1, "inferred_token": "color.text.subtle.hover", "inferred_value": "#4b5563"},
+    "border-gray-950/5": {"frequency": 2, "inferred_token": "color.border.subtle", "inferred_value": "rgba(3,7,18,0.05)"}
+  },
+  "observed_layout_classes": {
+    "max-w-6xl":   {"frequency": 2, "inferred_token": "layout.container.max", "inferred_value": "72rem / 1152px"},
+    "mx-auto":     {"frequency": 2, "inferred_token": "layout.center", "inferred_value": "margin-inline: auto"},
+    "min-h-screen":{"frequency": 1, "inferred_token": "layout.viewport.min-h", "inferred_value": "100vh"},
+    "sticky":      {"frequency": 1, "inferred_token": "layout.position.sticky", "inferred_value": "position: sticky"},
+    "top-0":       {"frequency": 1, "inferred_token": "layout.offset.top-0", "inferred_value": "top: 0"},
+    "z-50":        {"frequency": 1, "inferred_token": "layout.z-index.nav", "inferred_value": "50"},
+    "w-full":      {"frequency": 1, "inferred_token": "layout.width.full", "inferred_value": "100%"},
+    "grid":        {"frequency": 1, "inferred_token": "layout.display.grid"},
+    "grid-cols-3": {"frequency": 1, "inferred_token": "layout.grid.cols-3"},
+    "flex":        {"frequency": 6, "inferred_token": "layout.display.flex"},
+    "flex-col":    {"frequency": 1, "inferred_token": "layout.flex.col"},
+    "sm:flex-row": {"frequency": 1, "inferred_token": "layout.flex.row@sm"}
+  },
+  "observed_spacing_classes": {
+    "px-6": {"frequency": 2, "inferred_token": "space.x.6", "inferred_value": "1.5rem"},
+    "py-3": {"frequency": 1, "inferred_token": "space.y.3", "inferred_value": "0.75rem"},
+    "py-10":{"frequency": 1, "inferred_token": "space.y.10", "inferred_value": "2.5rem"},
+    "px-4": {"frequency": 1, "inferred_token": "space.x.4", "inferred_value": "1rem"},
+    "gap-2":{"frequency": 3, "inferred_token": "space.gap.2", "inferred_value": "0.5rem"},
+    "gap-4":{"frequency": 2, "inferred_token": "space.gap.4", "inferred_value": "1rem"},
+    "gap-6":{"frequency": 1, "inferred_token": "space.gap.6", "inferred_value": "1.5rem"},
+    "gap-8":{"frequency": 1, "inferred_token": "space.gap.8", "inferred_value": "2rem"},
+    "mt-2": {"frequency": 1, "inferred_token": "space.mt.2", "inferred_value": "0.5rem"}
+  },
+  "observed_typography_classes": {
+    "text-base":      {"frequency": 1, "inferred_token": "type.size.base", "inferred_value": "1rem"},
+    "text-sm":        {"frequency": 8, "inferred_token": "type.size.sm",   "inferred_value": "0.875rem"},
+    "text-4xl":       {"frequency": 1, "inferred_token": "type.size.4xl",  "inferred_value": "2.25rem"},
+    "font-bold":      {"frequency": 3, "inferred_token": "type.weight.bold", "inferred_value": "700"},
+    "font-medium":    {"frequency": 4, "inferred_token": "type.weight.medium", "inferred_value": "500"},
+    "tracking-tight": {"frequency": 1, "inferred_token": "type.tracking.tight", "inferred_value": "-0.025em"},
+    "antialiased":    {"frequency": 1, "inferred_token": "type.smoothing", "inferred_value": "-webkit-font-smoothing: antialiased"}
+  },
+  "observed_radius_and_effects": {
+    "rounded-lg":      {"frequency": 1, "inferred_token": "radius.lg", "inferred_value": "0.5rem"},
+    "backdrop-blur-md":{"frequency": 1, "inferred_token": "effect.blur.md", "inferred_value": "backdrop-filter: blur(12px)"},
+    "border-t":        {"frequency": 1, "inferred_token": "border.top.1"},
+    "border-b":        {"frequency": 1, "inferred_token": "border.bottom.1"},
+    "transition":      {"frequency": 1, "inferred_token": "motion.transition.base"},
+    "transition-colors": {"frequency": 4, "inferred_token": "motion.transition.colors"}
+  },
+  "shared_with_ideacheck": [
+    "inter_5972bc34 font module hash",
+    "bg-background body class",
+    "bg-indigo-600 brand button",
+    "sticky top-0 z-50 bg-white/80 backdrop-blur-md nav pattern",
+    "max-w-6xl container",
+    "rounded-lg button radius",
+    "border-gray-950/5 hairline borders",
+    "© 2026 footer copy",
+    "LanguageSwitcher placement"
+  ]
+}

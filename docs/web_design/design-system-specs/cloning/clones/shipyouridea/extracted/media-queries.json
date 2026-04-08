@@ -1,0 +1,33 @@
+{
+  "source": "Tailwind responsive prefixes observed in raw/dom.html (captured 2026-04-08).",
+  "note": "Only breakpoints actually used by classes serialized in the captured HTML are listed. Hero/Demo/Pricing/FAQ are client-rendered, so their breakpoint usage is not captured here.",
+  "tailwind_default_breakpoints": {
+    "sm": "640px",
+    "md": "768px",
+    "lg": "1024px",
+    "xl": "1280px",
+    "2xl": "1536px"
+  },
+  "observed_breakpoints": [
+    {
+      "prefix": "sm",
+      "min_width": "640px",
+      "media_query": "@media (min-width: 640px)",
+      "frequency": 2,
+      "occurrences": [
+        {
+          "class": "sm:flex",
+          "context": "nav primary links: hidden on mobile, flex on sm+",
+          "selector": "<div class=\"hidden items-center justify-center gap-8 sm:flex\">"
+        },
+        {
+          "class": "sm:flex-row",
+          "context": "footer row: column on mobile, row on sm+",
+          "selector": "<div class=\"... flex-col items-center justify-between gap-4 sm:flex-row\">"
+        }
+      ]
+    }
+  ],
+  "unused_in_capture": ["md", "lg", "xl", "2xl"],
+  "implied_layout_strategy": "Mobile-first. Single sm (640px) breakpoint flips nav links from hidden→visible and footer layout from column→row. No md/lg/xl behavior is exercised by the rendered shell — those breakpoints likely live inside the client-only sections."
+}

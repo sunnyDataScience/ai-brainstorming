@@ -1,0 +1,63 @@
+{
+  "source": "Parsed from Next.js RSC payload embedded in raw/dom.html (self.__next_f.push entries).",
+  "framework": "Next.js App Router (RSC streaming)",
+  "page_components": [
+    {
+      "id": "4",
+      "module_id": 38829,
+      "name": "Hero",
+      "kind": "client",
+      "render_order": 1,
+      "notes": "Inner copy client-rendered; not present in initial HTML."
+    },
+    {
+      "id": "5",
+      "module_id": 68975,
+      "name": "InteractiveDemo",
+      "kind": "client",
+      "render_order": 2,
+      "notes": "Demo widget; client-rendered."
+    },
+    {
+      "id": "6",
+      "module_id": 50512,
+      "name": "Pricing",
+      "kind": "client",
+      "render_order": 3,
+      "notes": "Pricing section; client-rendered."
+    },
+    {
+      "id": "7",
+      "module_id": 26697,
+      "name": "FAQ",
+      "kind": "client",
+      "render_order": 4,
+      "notes": "FAQ accordion; client-rendered."
+    }
+  ],
+  "shell_components": [
+    {"id": "9", "module_id": 97367, "name": "OutletBoundary"},
+    {"id": "c", "module_id": 97367, "name": "ViewportBoundary"},
+    {"id": "e", "module_id": 97367, "name": "MetadataBoundary"},
+    {"id": "10", "module_id": 68027, "name": "default"},
+    {"id": "11", "module_id": 24528, "name": "LocaleProvider"},
+    {"id": "12", "module_id": 92654, "name": "AuthProvider"},
+    {"id": "13", "module_id": 39756, "name": "default"},
+    {"id": "14", "module_id": 37457, "name": "default"},
+    {"id": "15", "module_id": 22016, "name": "Link"},
+    {"id": "16", "module_id": 85437, "name": "Image"},
+    {"id": "17", "module_id": 87134, "name": "LanguageSwitcher"},
+    {"id": "18", "module_id": 27201, "name": "IconMark"}
+  ],
+  "missing_sections": {
+    "DataSources": "NOT registered. Confirmed by `grep -c '\"DataSources\"' = 0`. ideacheck.cc registers a DataSources section; shipyouridea.today does not."
+  },
+  "rendered_in_html": {
+    "nav": true,
+    "footer": true,
+    "hero": false,
+    "interactive_demo": false,
+    "pricing": false,
+    "faq": false
+  }
+}

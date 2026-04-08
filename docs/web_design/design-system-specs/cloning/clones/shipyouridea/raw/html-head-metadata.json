@@ -1,0 +1,52 @@
+{
+  "source_url": "https://shipyouridea.today/",
+  "captured_at": "2026-04-08",
+  "http_status": 500,
+  "capture_note": "Server returned 500 with __next_error__ HTML id, but full RSC payload was rendered into the page (Next.js streaming SSR error fallback). All metadata and component registry are present and usable for capture/extract. Hero/Demo/Pricing/FAQ inner copy remains client-rendered and is therefore TBD.",
+  "html_lang": "zh-Hant",
+  "title": "ShipYourIdea — 你的點子能活多久？",
+  "description": "輸入你的產品點子，AI 從 7 個面向打分數，告訴你這個點子會怎麼死。",
+  "robots": "noindex",
+  "viewport": "width=device-width, initial-scale=1",
+  "charset": "utf-8",
+  "open_graph": {
+    "og:title": "ShipYourIdea — 你的點子能活多久？",
+    "og:description": "輸入你的產品點子，AI 從 7 個面向打分數，告訴你這個點子會怎麼死。",
+    "og:url": "https://shipyouridea.today",
+    "og:site_name": "ShipYourIdea",
+    "og:locale": "zh_TW",
+    "og:image": "https://shipyouridea.today/og-image.png",
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "ShipYourIdea — AI 創業點子驗證工具",
+    "og:type": "website"
+  },
+  "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "ShipYourIdea — 你的點子能活多久？",
+    "twitter:description": "輸入你的產品點子，AI 從 7 個面向打分數，告訴你這個點子會怎麼死。",
+    "twitter:image": "https://shipyouridea.today/og-image.png"
+  },
+  "icons": {
+    "favicon": {
+      "href": "/favicon.ico?favicon.16i07ngvr~7f_.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  },
+  "preloaded_assets": {
+    "css": "/_next/static/chunks/08xfyi~fk9y64.css",
+    "font": {
+      "href": "/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2",
+      "type": "font/woff2",
+      "crossOrigin": ""
+    }
+  },
+  "analytics": {
+    "cloudflare_insights": {
+      "beacon": "https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516",
+      "token": "0e6a85f1486a4c4292b3a05bf489c165"
+    }
+  },
+  "build_id": "UkVvqOg2r4imiTx9mVAsu"
+}
