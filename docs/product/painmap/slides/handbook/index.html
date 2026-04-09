@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>從痛點到第一塊錢 — PainMap 破壞式創新引導手冊</title>
+<style>
+  :root {
+    --indigo: #1E3A5F;
+    --teal: #2D7D8A;
+    --amber: #E8913A;
+    --green: #2D9D78;
+    --bg: #0a0a0a;
+    --bg-card: #151515;
+    --bg-card-alt: #1a1a1a;
+    --text: #e8e8e8;
+    --text-dim: #888;
+    --text-accent: #fff;
+    --border: #2a2a2a;
+    --red: #e05252;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 17px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "SF Pro Text", "Helvetica Neue", "Noto Sans TC", sans-serif;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Navigation ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background: #111;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 1.5rem 0;
+    z-index: 100;
+    transition: transform .3s;
+  }
+  nav .nav-title {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--text-dim);
+    padding: 0 1.2rem;
+    margin-bottom: .75rem;
+  }
+  nav a {
+    display: block;
+    padding: .45rem 1.2rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: .82rem;
+    border-left: 3px solid transparent;
+    transition: all .2s;
+  }
+  nav a:hover, nav a.active {
+    color: var(--text-accent);
+    background: rgba(255,255,255,.04);
+    border-left-color: var(--amber);
+  }
+  nav a.phase { padding-left: 2rem; font-size: .78rem; }
+  nav .nav-divider {
+    height: 1px;
+    background: var(--border);
+    margin: .6rem 1.2rem;
+  }
+
+  /* ── Main ── */
+  main {
+    margin-left: 260px;
+    max-width: 780px;
+    padding: 0 2.5rem 6rem;
+  }
+
+  /* ── Sections ── */
+  section {
+    padding-top: 4.5rem;
+    margin-bottom: 2rem;
+  }
+  section:first-of-type { padding-top: 0; }
+
+  /* ── Cover ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .cover h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: #fff;
+    margin-bottom: 1.2rem;
+  }
+  .cover .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ── Typography ── */
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+    letter-spacing: -.01em;
+  }
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-accent);
+    margin: 2rem 0 .75rem;
+  }
+  h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin: 1.5rem 0 .5rem;
+  }
+  p { margin-bottom: 1rem; }
+
+  .big-number {
+    font-size: 6rem;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    line-height: 1;
+    margin: 2rem 0 1rem;
+  }
+  .highlight-amber { color: var(--amber); }
+  .highlight-green { color: var(--green); }
+  .highlight-teal { color: var(--teal); }
+  .highlight-red { color: var(--red); }
+  .highlight-white { color: #fff; font-weight: 600; }
+
+  strong { color: #fff; }
+
+  blockquote {
+    border-left: 3px solid var(--amber);
+    padding: .75rem 1.2rem;
+    margin: 1.5rem 0;
+    color: var(--text);
+    background: rgba(232,145,58,.06);
+    border-radius: 0 6px 6px 0;
+  }
+  blockquote p:last-child { margin-bottom: 0; }
+
+  del {
+    color: var(--text-dim);
+    text-decoration: line-through;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+
+  /* ── Code / Pre ── */
+  pre, code {
+    font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+    font-size: .85rem;
+  }
+  pre {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  code {
+    background: rgba(255,255,255,.08);
+    padding: .15em .4em;
+    border-radius: 4px;
+  }
+  pre code { background: none; padding: 0; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1.5rem 0;
+    font-size: .9rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+  }
+  thead {
+    background: linear-gradient(135deg, rgba(45,125,138,.15), rgba(30,58,95,.2));
+  }
+  th {
+    text-align: left;
+    padding: .85rem 1.1rem;
+    color: var(--teal);
+    border-bottom: 1px solid rgba(45,125,138,.3);
+    font-weight: 600;
+    font-size: .82rem;
+    letter-spacing: .04em;
+    text-transform: none;
+  }
+  td {
+    padding: .75rem 1.1rem;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    vertical-align: top;
+    transition: background .2s, transform .15s;
+  }
+  tr:last-child td { border-bottom: none; }
+  tbody tr { transition: background .2s; }
+  tbody tr:hover { background: rgba(255,255,255,.035); }
+  tbody tr:hover td:first-child { border-left: 3px solid var(--amber); padding-left: calc(1.1rem - 3px); }
+
+  /* contrast table — used for vs comparisons */
+  table.contrast-table td:last-child { color: #fff; font-weight: 600; }
+  table.contrast-table td:nth-last-child(2) { color: var(--text-dim); }
+
+  /* strategy table special */
+  table .cell-nope {
+    color: var(--red);
+    font-weight: 600;
+    background: rgba(224,82,82,.08);
+    border-radius: 4px;
+    padding: .15rem .5rem;
+    display: inline-block;
+  }
+  table .cell-yes {
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1.6rem;
+    margin: 1.2rem 0;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+  }
+  .card-amber { border-color: rgba(232,145,58,.2); }
+  .card-amber::before { background: linear-gradient(180deg, var(--amber), #f0b060); }
+  .card-amber:hover { box-shadow: 0 4px 20px rgba(232,145,58,.08); }
+  .card-green { border-color: rgba(45,157,120,.2); }
+  .card-green::before { background: linear-gradient(180deg, var(--green), #5dd4a8); }
+  .card-green:hover { box-shadow: 0 4px 20px rgba(45,157,120,.08); }
+  .card-teal { border-color: rgba(45,125,138,.2); }
+  .card-teal::before { background: linear-gradient(180deg, var(--teal), #5cc5d4); }
+  .card-teal:hover { box-shadow: 0 4px 20px rgba(45,125,138,.08); }
+  .card-red { border-color: rgba(224,82,82,.2); }
+  .card-red::before { background: linear-gradient(180deg, var(--red), #e88080); }
+  .card-red:hover { box-shadow: 0 4px 20px rgba(224,82,82,.08); }
+
+  /* ── Canvas Grid ── */
+  .canvas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin: 2rem 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--border);
+  }
+  .canvas-cell {
+    padding: 1.5rem 1.4rem;
+    background: var(--bg-card);
+    position: relative;
+    transition: background .25s, transform .2s;
+  }
+  .canvas-cell:hover { background: rgba(255,255,255,.03); }
+  .canvas-cell::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+  }
+  .canvas-cell:nth-child(1)::before { background: linear-gradient(90deg, #4a90d9, #6baaed); }
+  .canvas-cell:nth-child(2)::before { background: linear-gradient(90deg, var(--green), #5dd4a8); }
+  .canvas-cell:nth-child(3)::before { background: linear-gradient(90deg, var(--amber), #f0b060); }
+  .canvas-cell:nth-child(4)::before { background: linear-gradient(90deg, #9b59b6, #c084d8); }
+  .canvas-cell .label {
+    font-size: .72rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: .6rem;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .canvas-cell .label::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .canvas-cell:nth-child(1) .label::before { background: #4a90d9; }
+  .canvas-cell:nth-child(2) .label::before { background: var(--green); }
+  .canvas-cell:nth-child(3) .label::before { background: var(--amber); }
+  .canvas-cell:nth-child(4) .label::before { background: #9b59b6; }
+  .canvas-cell .value {
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.6;
+  }
+
+  /* ── Pit cards ── */
+  .pit {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+    margin: 1.2rem 0;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .pit:hover { border-color: rgba(224,82,82,.3); box-shadow: 0 4px 20px rgba(224,82,82,.06); }
+  .pit::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at top right, rgba(224,82,82,.08), transparent 70%);
+    pointer-events: none;
+  }
+  .pit .wrong {
+    color: var(--red);
+    margin-bottom: .5rem;
+    padding: .4rem .8rem;
+    background: rgba(224,82,82,.08);
+    border-radius: 6px;
+    border-left: 3px solid var(--red);
+    display: inline-block;
+  }
+  .pit .right {
+    color: var(--green);
+    font-weight: 600;
+    padding: .4rem .8rem;
+    background: rgba(45,157,120,.08);
+    border-radius: 6px;
+    border-left: 3px solid var(--green);
+  }
+
+  /* ── Check list ── */
+  .checklist {
+    list-style: none;
+    margin: 1rem 0;
+  }
+  .checklist li {
+    padding: .35rem 0 .35rem 1.8rem;
+    position: relative;
+  }
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+  }
+
+  /* ── Phase badge ── */
+  .phase-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .3rem .8rem;
+    border-radius: 20px;
+    margin-bottom: .75rem;
+  }
+  .phase-badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+  }
+  .badge-see   { background: rgba(74,144,217,.15); color: #6baaed; border: 1px solid rgba(74,144,217,.3); }
+  .badge-see::before { background: #6baaed; }
+  .badge-pos   { background: rgba(45,125,138,.15); color: #5cc5d4; border: 1px solid rgba(45,125,138,.3); }
+  .badge-pos::before { background: #5cc5d4; }
+  .badge-act   { background: rgba(232,145,58,.15); color: var(--amber); border: 1px solid rgba(232,145,58,.3); }
+  .badge-act::before { background: var(--amber); }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .4; }
+  }
+
+  /* ── Timeline ── */
+  .timeline { position: relative; padding-left: 2.8rem; margin: 2rem 0; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: .75rem;
+    top: .5rem;
+    bottom: .5rem;
+    width: 2px;
+    background: linear-gradient(180deg, var(--amber), var(--green));
+    border-radius: 2px;
+  }
+  .timeline .step {
+    position: relative;
+    margin-bottom: 1rem;
+    padding: .8rem 1.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color .2s, box-shadow .2s, transform .15s;
+  }
+  .timeline .step:hover {
+    border-color: rgba(232,145,58,.3);
+    box-shadow: 0 2px 16px rgba(232,145,58,.08);
+    transform: translateX(4px);
+  }
+  .timeline .step::before {
+    content: "";
+    position: absolute;
+    left: -2.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--amber);
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 2px rgba(232,145,58,.3);
+    z-index: 1;
+  }
+  .timeline .step:last-child::before {
+    background: var(--green);
+    box-shadow: 0 0 0 2px rgba(45,157,120,.3);
+  }
+  .timeline .step::after {
+    content: "";
+    position: absolute;
+    left: -1.35rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: .75rem;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Comparison columns ── */
+  .duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .duo > div {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem;
+    transition: border-color .25s, box-shadow .25s, transform .15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .duo > div:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,.3);
+  }
+  .duo > div::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  .duo > div:hover::before { opacity: 1; }
+
+  /* ── Flow Pipeline ── */
+  .flow-pipeline {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 2rem 0;
+    overflow-x: auto;
+    padding: .5rem 0;
+  }
+  .flow-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .flow-node .node-num {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 700;
+    color: #fff;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .flow-node:hover .node-num {
+    transform: scale(1.15);
+  }
+  .flow-node .node-label {
+    font-size: .72rem;
+    color: var(--text-dim);
+    white-space: nowrap;
+    text-align: center;
+    max-width: 70px;
+  }
+  .flow-node .node-phase {
+    font-size: .62rem;
+    color: var(--text-dim);
+    opacity: .6;
+  }
+  .flow-arrow {
+    width: 30px;
+    height: 2px;
+    background: var(--border);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .flow-arrow::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -3px;
+    border: 4px solid transparent;
+    border-left-color: var(--border);
+  }
+  .flow-group {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: .6rem .8rem;
+    border-radius: 12px;
+    position: relative;
+  }
+  .flow-group::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: .6rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: .1rem .5rem;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+  .flow-group.group-see {
+    background: rgba(74,144,217,.06);
+    border: 1px solid rgba(74,144,217,.15);
+  }
+  .flow-group.group-see::before { color: #6baaed; background: rgba(74,144,217,.12); }
+  .flow-group.group-see .node-num { background: linear-gradient(135deg, #3670a8, #4a90d9); box-shadow: 0 2px 10px rgba(74,144,217,.3); }
+
+  .flow-group.group-pos {
+    background: rgba(45,125,138,.06);
+    border: 1px solid rgba(45,125,138,.15);
+  }
+  .flow-group.group-pos::before { color: #5cc5d4; background: rgba(45,125,138,.12); }
+  .flow-group.group-pos .node-num { background: linear-gradient(135deg, #24697a, var(--teal)); box-shadow: 0 2px 10px rgba(45,125,138,.3); }
+
+  .flow-group.group-act {
+    background: rgba(232,145,58,.06);
+    border: 1px solid rgba(232,145,58,.15);
+  }
+  .flow-group.group-act::before { color: var(--amber); background: rgba(232,145,58,.12); }
+  .flow-group.group-act .node-num { background: linear-gradient(135deg, #c07530, var(--amber)); box-shadow: 0 2px 10px rgba(232,145,58,.3); }
+
+  .flow-group-arrow {
+    width: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--border), rgba(255,255,255,.15));
+    margin: 0 .3rem;
+    flex-shrink: 0;
+  }
+
+  /* ── Collapsible (details/summary) ── */
+  details {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 1.2rem 0;
+    overflow: hidden;
+    transition: border-color .25s, box-shadow .25s;
+  }
+  details:hover { border-color: rgba(255,255,255,.1); }
+  details[open] { box-shadow: 0 4px 24px rgba(0,0,0,.3); }
+  details[open] > summary { border-bottom: 1px solid var(--border); }
+  summary {
+    padding: 1rem 1.4rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    list-style: none;
+    user-select: none;
+    transition: background .2s;
+  }
+  summary:hover { background: rgba(255,255,255,.03); }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: "▸";
+    font-size: .8rem;
+    color: var(--amber);
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+  details[open] > summary::before { transform: rotate(90deg); }
+  summary .sum-badge {
+    font-size: .6rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .15rem .5rem;
+    border-radius: 4px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .sum-badge-case { background: rgba(232,145,58,.15); color: var(--amber); }
+  .sum-badge-tip  { background: rgba(45,125,138,.15); color: #5cc5d4; }
+  .sum-badge-warn { background: rgba(224,82,82,.15); color: var(--red); }
+  details .detail-body {
+    padding: 1.2rem 1.4rem;
+  }
+  details .detail-body p:last-child { margin-bottom: 0; }
+
+  /* case scenario header inside details */
+  .case-header {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-bottom: 1rem;
+    padding-bottom: .75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .case-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .case-meta { font-size: .85rem; }
+  .case-meta .case-name { font-weight: 600; color: #fff; }
+  .case-meta .case-desc { color: var(--text-dim); font-size: .78rem; }
+
+  /* ── Transition line ── */
+  .transition {
+    text-align: center;
+    color: var(--text-dim);
+    font-style: italic;
+    margin: 3rem 0 1rem;
+    font-size: .9rem;
+  }
+
+  /* ── Back to top ── */
+  .top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    background: var(--indigo);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity .3s;
+    z-index: 90;
+  }
+  .top-btn.visible { opacity: 1; }
+
+  /* ── Mobile toggle ── */
+  .nav-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 110;
+    width: 40px;
+    height: 40px;
+    background: var(--indigo);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    nav { transform: translateX(-100%); }
+    nav.open { transform: translateX(0); box-shadow: 4px 0 20px rgba(0,0,0,.6); }
+    .nav-toggle { display: flex; align-items: center; justify-content: center; }
+    main { margin-left: 0; padding: 0 1.4rem 5rem; }
+    .cover h1 { font-size: 2.2rem; }
+    .big-number { font-size: 4rem; }
+    .duo, .canvas-grid { grid-template-columns: 1fr; }
+    .flow-pipeline { flex-wrap: wrap; gap: .5rem; justify-content: center; }
+    .flow-group-arrow { display: none; }
+    h2 { font-size: 1.6rem; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    nav, .nav-toggle, .top-btn { display: none; }
+    main { margin-left: 0; max-width: 100%; }
+    body { background: #fff; color: #222; }
+    .card, pre { border-color: #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Mobile nav toggle -->
+<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+
+<!-- Side Navigation -->
+<nav id="sideNav">
+  <div class="nav-title">引導手冊</div>
+  <a href="#cover">封面</a>
+  <a href="#hook">01 — 代理動作</a>
+  <a href="#objectives">02 — 三樣東西</a>
+  <a href="#prior">03 — 三個坑</a>
+  <a href="#framework">04 — 7 步總覽</a>
+  <div class="nav-divider"></div>
+  <div class="nav-title">看清問題</div>
+  <a href="#phase1" class="phase">P1 痛點採集</a>
+  <a href="#phase2" class="phase">P2 問題本質</a>
+  <div class="nav-divider"></div>
+  <div class="nav-title">找到位置</div>
+  <a href="#phase3" class="phase">P3 破壞式機會</a>
+  <a href="#phase4" class="phase">P4 策略圖</a>
+  <div class="nav-divider"></div>
+  <div class="nav-title">出手驗證</div>
+  <a href="#phase5" class="phase">P5 最小產品</a>
+  <a href="#phase6" class="phase">P6 不對稱動機</a>
+  <a href="#phase7" class="phase">P7 GTM 一頁紙</a>
+  <div class="nav-divider"></div>
+  <a href="#guidance">AI 使用指引</a>
+  <a href="#practice">課堂練習</a>
+  <a href="#case">完整案例</a>
+  <a href="#pitfalls">五個坑</a>
+  <a href="#assessment">自我評估</a>
+  <a href="#transfer">72 小時</a>
+  <a href="#closing">去做吧</a>
+</nav>
+
+<main>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 00 — COVER
+     ════════════════════════════════════════════════ -->
+<section id="cover" class="cover">
+  <h1>從痛點到第一塊錢</h1>
+  <p class="subtitle">一套 7 步框架。任何 AI 都能跑。今晚就能出手。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 01 — HOOK
+     ════════════════════════════════════════════════ -->
+<section id="hook">
+  <h2>你做了三個月，卻從來沒問過任何人：<br>「你願意付錢嗎？」</h2>
+
+  <div class="big-number">90%</div>
+
+  <blockquote>
+    <p>90% 的創業者，做了 logo、選了技術、寫了 landing page——<br>卻從來沒有發出一封訊息給真人。</p>
+  </blockquote>
+
+  <p>這叫什麼？</p>
+
+  <h3 class="highlight-red">代理動作。</h3>
+
+  <div style="display:grid;gap:.6rem;margin:1.5rem 0">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">
+      <div style="background:rgba(224,82,82,.08);border:1px solid rgba(224,82,82,.15);border-radius:10px;padding:.8rem 1rem;text-align:center">
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:.4rem">看起來像進展</div>
+        <div style="color:#fff;font-weight:600">做 logo</div>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;text-align:center">
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:.4rem">實際上</div>
+        <div>沒人知道你存在</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">
+      <div style="background:rgba(224,82,82,.08);border:1px solid rgba(224,82,82,.15);border-radius:10px;padding:.8rem 1rem;text-align:center">
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:.4rem">看起來像進展</div>
+        <div style="color:#fff;font-weight:600">選技術棧</div>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;text-align:center">
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:.4rem">實際上</div>
+        <div>沒有驗證問題存在</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">
+      <div style="background:rgba(224,82,82,.08);border:1px solid rgba(224,82,82,.15);border-radius:10px;padding:.8rem 1rem;text-align:center">
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:.4rem">看起來像進展</div>
+        <div style="color:#fff;font-weight:600">寫商業計畫書</div>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;text-align:center">
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:.4rem">實際上</div>
+        <div>沒人看過你的東西</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">
+      <div style="background:rgba(224,82,82,.08);border:1px solid rgba(224,82,82,.15);border-radius:10px;padding:.8rem 1rem;text-align:center">
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:.4rem">看起來像進展</div>
+        <div style="color:#fff;font-weight:600">研究市場規模</div>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;text-align:center">
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:.4rem">實際上</div>
+        <div>沒跟任何真人說過話</div>
+      </div>
+    </div>
+  </div>
+
+  <p>這些全部是代理動作。<br>它們讓你覺得「我在前進」。<strong>但你沒有。</strong></p>
+
+  <p class="transition">→ 怎麼做到？我告訴你。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 02 — OBJECTIVES
+     ════════════════════════════════════════════════ -->
+<section id="objectives">
+  <h2>今天你帶走三樣東西。只有三樣。</h2>
+
+  <div class="card card-teal">
+    <h4>第一樣：一套框架。</h4>
+    <p>7 步。從模糊想法，到有人付你錢。</p>
+  </div>
+
+  <div class="card card-teal">
+    <h4>第二樣：一組 Prompt。</h4>
+    <p>複製。貼上。任何 AI 都能跑。ChatGPT、Claude、Gemini，隨便你。</p>
+  </div>
+
+  <div class="card card-teal">
+    <h4>第三樣：一個判斷標準。</h4>
+    <p>什麼時候前進。什麼時候調整。什麼時候放棄。<br>不靠感覺。靠<strong>物理量</strong>。</p>
+  </div>
+
+  <p style="margin-top:1.5rem">你<em>不會</em>學到的東西？</p>
+  <p><del>打分數。</del> <del>預測成功率。</del> <del>寫商業計畫書。</del></p>
+  <p>因為那些全部是<span class="highlight-red">代理動作</span>。</p>
+
+  <p class="transition">→ 但在開始之前——你犯過這些錯嗎？</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 03 — PRIOR KNOWLEDGE
+     ════════════════════════════════════════════════ -->
+<section id="prior">
+  <h2>三個坑。幾乎每個人都跳過。</h2>
+
+  <div class="pit">
+    <h4>坑 1：你從解法出發。</h4>
+    <p class="wrong">「我要做一個 AI 客服機器人。」</p>
+    <p>聽起來很酷。但問你一個問題：<strong>誰需要？</strong></p>
+    <p>反過來才對。先有問題，再有解法。</p>
+    <p class="right">「小賣家每天花 2 小時重複回答一樣的問題。」——這才是起點。</p>
+  </div>
+
+  <div class="pit">
+    <h4>坑 2：你的客戶是「所有人」。</h4>
+    <p class="wrong">「我的目標客群是中小企業老闆。」</p>
+    <p>全台灣有 150 萬家中小企業。你要發 150 萬封訊息嗎？</p>
+    <p>不。你需要的是<strong>一個人。一個有名字的人。</strong></p>
+    <p class="right">「月營收 3-10 萬、在 Shopee 賣手作飾品、1 人經營的小美。」</p>
+  </div>
+
+  <div class="pit">
+    <h4>坑 3：你一直在準備。</h4>
+    <p>做 logo。選技術。寫 landing page。研究市場。</p>
+    <p>三個月過去了。你跟多少個真人說過話？</p>
+    <p class="right" style="font-size:1.3rem">零。</p>
+  </div>
+
+  <p class="transition">→ 今天教你一套方法，讓你看清問題。而且不用三個月——3 到 5 個小時。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 04 — FRAMEWORK OVERVIEW
+     ════════════════════════════════════════════════ -->
+<section id="framework">
+  <h2>7 步。從模糊到收錢。</h2>
+
+  <div class="flow-pipeline">
+    <div class="flow-group group-see" data-label="看清問題 1-2hr">
+      <div class="flow-node">
+        <div class="node-num">1</div>
+        <div class="node-label">看到</div>
+        <div class="node-phase">P1</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node">
+        <div class="node-num">2</div>
+        <div class="node-label">看透</div>
+        <div class="node-phase">P2</div>
+      </div>
+    </div>
+    <div class="flow-group-arrow"></div>
+    <div class="flow-group group-pos" data-label="找到位置 1-1.5hr">
+      <div class="flow-node">
+        <div class="node-num">3</div>
+        <div class="node-label">找角落</div>
+        <div class="node-phase">P3</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node">
+        <div class="node-num">4</div>
+        <div class="node-label">畫策略</div>
+        <div class="node-phase">P4</div>
+      </div>
+    </div>
+    <div class="flow-group-arrow"></div>
+    <div class="flow-group group-act" data-label="出手驗證 1-1.5hr">
+      <div class="flow-node">
+        <div class="node-num">5</div>
+        <div class="node-label">最小品</div>
+        <div class="node-phase">P5</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node">
+        <div class="node-num">6</div>
+        <div class="node-label">確認</div>
+        <div class="node-phase">P6</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node">
+        <div class="node-num">7</div>
+        <div class="node-label">出手</div>
+        <div class="node-phase">P7</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>三個階段</h3>
+
+  <table>
+    <thead><tr><th></th><th>你在回答什麼問題</th><th>花多久</th></tr></thead>
+    <tbody>
+      <tr><td><span class="phase-badge badge-see" style="margin:0;font-size:.6rem">看清問題</span></td><td>「到底什麼問題？」</td><td><strong>1-2 小時</strong></td></tr>
+      <tr><td><span class="phase-badge badge-pos" style="margin:0;font-size:.6rem">找到位置</span></td><td>「我站哪裡？」</td><td><strong>1-1.5 小時</strong></td></tr>
+      <tr><td><span class="phase-badge badge-act" style="margin:0;font-size:.6rem">出手驗證</span></td><td>「最小能賣什麼？」</td><td><strong>1-1.5 小時</strong></td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>全程 3-5 小時。不是 3-5 個月。</strong></p>
+
+  <hr>
+
+  <h3>四條紀律，貫穿始終</h3>
+
+  <div class="card card-red">
+    <p><strong>1. 沒有分數。</strong> 不打分、不排名、不預測成功率。</p>
+    <p><strong>2. 說「問題」，不說「點子」。</strong> 「我的點子」讓你防衛。「這個問題」讓你客觀。</p>
+    <p><strong>3. AI 做苦力，你做判斷。</strong> 永遠不要問 AI「我該不該做？」</p>
+    <p style="margin-bottom:0"><strong>4. 每一步都要一個名字。</strong> 填不出真人名字？先去認識人。</p>
+  </div>
+
+  <p class="transition">→ 好。我們一步一步來。Phase 1。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 05 — PHASE 1
+     ════════════════════════════════════════════════ -->
+<section id="phase1">
+  <span class="phase-badge badge-see">看清問題</span>
+  <h2>Phase 1：把散亂的「好煩」變成武器</h2>
+
+  <p>你的原料：社群留言、客戶差評、朋友的抱怨、你自己半夜覺得「為什麼沒人做」的念頭。</p>
+  <p>全部都是散亂的。Phase 1 做一件事：<strong>把散亂，變結構。</strong></p>
+
+  <blockquote>
+    <p>「當 <strong>[誰]</strong> 在 <strong>[什麼時候]</strong> 想要 <strong>[什麼]</strong>，<br>
+    但現在只能 <strong>[怎麼做]</strong>，讓他覺得 <strong>[多痛]</strong>。」</p>
+  </blockquote>
+
+  <div class="card card-amber">
+    <p style="margin-bottom:0"><em>範例：</em> 「當 <strong>Shopee 手作賣家</strong>在<strong>晚上回客服</strong>時想要<strong>快速回覆</strong>，但現在只能<strong>逐則手打 LINE</strong>，讓她覺得<strong>浪費時間又容易漏單</strong>。」</p>
+  </div>
+
+  <h3>三個入口</h3>
+  <table>
+    <thead><tr><th>你有什麼</th><th>用哪個 Prompt</th></tr></thead>
+    <tbody>
+      <tr><td>留言、對話、截圖</td><td>Prompt 1A：直接提取</td></tr>
+      <tr><td>一堆 idea</td><td>Prompt 1B：逐一拆解</td></tr>
+      <tr><td>腦中模糊想法</td><td>Prompt 1C：AI 用問題引導你</td></tr>
+    </tbody>
+  </table>
+
+  <p>複製。貼上。AI 幫你整理。<strong>但有一條線 AI 不能跨過。</strong></p>
+  <blockquote><p>「誰」那一欄，AI 不能幫你填。<br>那必須是你認識的、有名字的、你能打電話的真人。</p></blockquote>
+
+  <details>
+    <summary>真實案例：小美從社群留言撈出 5 個痛點 <span class="sum-badge sum-badge-case">案例</span></summary>
+    <div class="detail-body">
+      <div class="case-header">
+        <div class="case-avatar" style="background:linear-gradient(135deg,#e87da0,#c75b7a)">美</div>
+        <div class="case-meta">
+          <div class="case-name">小美 — Shopee 手作飾品賣家</div>
+          <div class="case-desc">月營收 NT$5 萬 / 1 人經營 / 每天花 2 小時回 LINE</div>
+        </div>
+      </div>
+      <p><strong>素材來源</strong>：Facebook「蝦皮賣家交流區」3 則留言 + 跟朋友小美的 LINE 對話截圖</p>
+      <p><strong>貼進 Prompt 1A 後，AI 整理出的 5 個痛點：</strong></p>
+      <div class="card card-amber" style="margin:.8rem 0">
+        <p style="margin-bottom:.4rem"><strong>痛點 1</strong>：當<strong>手作飾品賣家</strong>在<strong>晚上 9-11 點</strong>想要<strong>快速回覆客戶</strong>，但只能<strong>逐則手打 LINE</strong>，讓她覺得<strong>做到凌晨還漏訊息</strong>。</p>
+        <p style="margin-bottom:.4rem"><strong>痛點 2</strong>：當<strong>小美</strong>在<strong>週末出貨後</strong>想要<strong>追蹤客戶是否收到</strong>，但只能<strong>開 Excel 一筆筆對</strong>，讓她覺得<strong>效率極低容易出錯</strong>。</p>
+        <p style="margin-bottom:.4rem"><strong>痛點 3</strong>：當<strong>新客人</strong>在<strong>下單前</strong>想知道<strong>尺寸和材質</strong>，但小美只能<strong>重複貼同一段話</strong>，讓她覺得<strong>像機器人但又不是自動的</strong>。</p>
+        <p style="margin-bottom:.4rem"><strong>痛點 4</strong>：當<strong>買家</strong>在<strong>非營業時間</strong>問<strong>運費和寄送時間</strong>，但<strong>沒人回</strong>，讓買家覺得<strong>服務差直接去別家</strong>。</p>
+        <p style="margin-bottom:0"><strong>痛點 5</strong>：當<strong>小美</strong>想<strong>花時間設計新品</strong>，但每天被<strong>重複問題佔掉 2 小時</strong>，讓她覺得<strong>生意卡住無法成長</strong>。</p>
+      </div>
+      <p><strong>小美自己加的判斷</strong>：「痛點 2 的『誰』我填不出來，那是 AI 猜的，先砍掉。痛點 1、3、4、5 的人我都認識——就是我自己和社團裡常互動的阿珍、Jenny。」</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>真實案例：阿凱把模糊念頭變成結構化痛點 <span class="sum-badge sum-badge-case">案例</span></summary>
+    <div class="detail-body">
+      <div class="case-header">
+        <div class="case-avatar" style="background:linear-gradient(135deg,#4a90d9,#3670a8)">凱</div>
+        <div class="case-meta">
+          <div class="case-name">阿凱 — 健身教練轉線上</div>
+          <div class="case-desc">想做線上課但不知從哪開始 / 有 200+ IG 粉絲常問問題</div>
+        </div>
+      </div>
+      <p><strong>他的狀態</strong>：腦中只有「我想做線上健身教學」，沒有任何素材。</p>
+      <p><strong>用 Prompt 1C</strong>（AI 問問題引導），AI 連問了 5 個問題：</p>
+      <pre style="font-size:.8rem"><code>AI：你的學員最常問你什麼問題？
+阿凱：「教練這個動作我回家做對嗎？」他們會拍影片傳給我。
+AI：你大概多久回一次？每次花多少時間？
+阿凱：每天至少 5-8 則。每則我要看影片、打字糾正，大概 10 分鐘。
+AI：如果不回會怎樣？
+阿凱：學員做錯會受傷。但我免費回的，一毛錢都沒收。</code></pre>
+      <p><strong>整理出的核心痛點</strong>：</p>
+      <blockquote><p>當<strong>健身教練的學員</strong>在<strong>回家自主訓練時</strong>想要<strong>確認動作正確</strong>，但現在只能<strong>拍影片傳教練等回覆</strong>，讓教練覺得<strong>每天花 1 小時免費批改卻沒收入</strong>。</p></blockquote>
+      <p style="margin-bottom:0"><strong>阿凱的反應</strong>：「我本來以為問題是『怎麼做線上課』，跑完才發現真正的問題是『我在免費做動作批改但沒有收費機制』。完全不同的方向。」</p>
+    </div>
+  </details>
+
+  <p class="transition">→ 有了一堆痛點。但一堆痛點不是方向。你需要收斂。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 06 — PHASE 2
+     ════════════════════════════════════════════════ -->
+<section id="phase2">
+  <span class="phase-badge badge-see">看清問題</span>
+  <h2>Phase 2：十個痛點背後，可能只有一個問題。</h2>
+
+  <pre><code>痛點 #1：賣家花太多時間回 LINE
+痛點 #3：賣家漏單因為訊息太多        →  同一個問題：
+痛點 #5：賣家沒時間做新品                「重複性客服勞動」</code></pre>
+
+  <p>Phase 2 幫你做聚合。把表面不同的痛點，歸到同一個根。</p>
+
+  <h3>物理量畫布</h3>
+  <p>四個格子。四個問題。全部要你自己填。AI 填不了。</p>
+
+  <div class="canvas-grid">
+    <div class="canvas-cell">
+      <div class="label">#1 具體的人</div>
+      <div class="value">我能說出 3 個人名嗎？<br>能打電話給他們嗎？</div>
+    </div>
+    <div class="canvas-cell">
+      <div class="label">#2 正在付錢的痛</div>
+      <div class="value">他們現在花多少錢/時間<br>在解決這個問題？</div>
+    </div>
+    <div class="canvas-cell">
+      <div class="label">#3 手工可交付</div>
+      <div class="value">不寫程式，<br>今晚能幫一個人做一次嗎？</div>
+    </div>
+    <div class="canvas-cell">
+      <div class="label">#4 收款管道</div>
+      <div class="value">我有現成的方式<br>收到錢嗎？</div>
+    </div>
+  </div>
+
+  <p>為什麼叫「物理量」？因為這四個東西<strong>可以測量</strong>。不是意見。不是感覺。是事實。</p>
+
+  <div class="card card-green">
+    <p><strong>怎麼選題？</strong> 不是選「最好的」。是選你<strong>認識最多人</strong>的那個。</p>
+    <p style="margin-bottom:0">人最多 = 驗證最快 = 犯錯成本最低。</p>
+  </div>
+
+  <details>
+    <summary>真實案例：小美的物理量畫布填寫過程 <span class="sum-badge sum-badge-case">案例</span></summary>
+    <div class="detail-body">
+      <div class="case-header">
+        <div class="case-avatar" style="background:linear-gradient(135deg,#e87da0,#c75b7a)">美</div>
+        <div class="case-meta">
+          <div class="case-name">小美 — 接續 Phase 1</div>
+          <div class="case-desc">5 個痛點聚合成 2 個問題主題</div>
+        </div>
+      </div>
+      <p><strong>AI 聚合結果</strong>：痛點 1+3+4+5 屬同一主題「重複性客服勞動」；痛點 2 單獨成「訂單追蹤混亂」。</p>
+      <p><strong>小美填的物理量畫布（主題 A：重複性客服勞動）</strong>：</p>
+      <div class="canvas-grid">
+        <div class="canvas-cell">
+          <div class="label">#1 具體的人</div>
+          <div class="value">小美（自己）、阿珍、Jenny<br><span style="color:var(--green);font-size:.8rem">&#10003; 3 個人名，都能 LINE 聯繫</span></div>
+        </div>
+        <div class="canvas-cell">
+          <div class="label">#2 正在付錢的痛</div>
+          <div class="value">每天 2 小時 × 時薪 NT$200<br>= 每月 NT$12,000 時間成本<br><span style="color:var(--green);font-size:.8rem">&#10003; 有數字</span></div>
+        </div>
+        <div class="canvas-cell">
+          <div class="label">#3 手工可交付</div>
+          <div class="value">我幫她整理常見問答 +<br>設定 LINE 自動回覆<br><span style="color:var(--green);font-size:.8rem">&#10003; 今晚就能做</span></div>
+        </div>
+        <div class="canvas-cell">
+          <div class="label">#4 收款管道</div>
+          <div class="value">銀行轉帳 / LINE Pay<br><span style="color:var(--green);font-size:.8rem">&#10003; 有現成方式</span></div>
+        </div>
+      </div>
+      <p><strong>主題 B（訂單追蹤）的畫布</strong>：#1 只填出 1 個人名，#3 想不到怎麼手工做。</p>
+      <p style="margin-bottom:0"><strong>選題決定</strong>：「A 的物理量全綠，B 只有一半。選 A。」——不是因為 A 比較「好」，是因為 A 最快能驗證。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>真實案例：阿凱發現自己該先認識人 <span class="sum-badge sum-badge-case">案例</span></summary>
+    <div class="detail-body">
+      <div class="case-header">
+        <div class="case-avatar" style="background:linear-gradient(135deg,#4a90d9,#3670a8)">凱</div>
+        <div class="case-meta">
+          <div class="case-name">阿凱 — 接續 Phase 1</div>
+          <div class="case-desc">物理量畫布卡在 #1</div>
+        </div>
+      </div>
+      <p><strong>阿凱的問題主題</strong>：「健身學員的動作批改需求沒有收費管道」</p>
+      <p><strong>物理量畫布</strong>：</p>
+      <ul style="margin:.5rem 0 .5rem 1.2rem">
+        <li><strong>#1 具體的人</strong>：寫出 8 個學員名字 <span class="highlight-green">&#10003;</span></li>
+        <li><strong>#2 付錢的痛</strong>：目前免費，但學員有說「教練你該收費」 <span class="highlight-amber">&#9888;</span> 需驗證</li>
+        <li><strong>#3 手工交付</strong>：「我可以錄一段示範影片回傳，加文字備註」 <span class="highlight-green">&#10003;</span></li>
+        <li><strong>#4 收款管道</strong>：LINE Pay <span class="highlight-green">&#10003;</span></li>
+      </ul>
+      <p style="margin-bottom:0"><strong>阿凱的決定</strong>：「#2 不確定。但我認識 8 個人，可以直接問。比起坐在那邊想，不如今天就問 3 個人『如果我每次幫你看影片收 NT$50，你 OK 嗎？』」</p>
+    </div>
+  </details>
+
+  <p class="transition">→ 你看清了問題。但問題存在，不代表你能做。你需要找到——一個角落。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 07 — PHASE 3
+     ════════════════════════════════════════════════ -->
+<section id="phase3">
+  <span class="phase-badge badge-pos">找到位置</span>
+  <h2>Phase 3：找到他們不屑做的事</h2>
+
+  <p>大公司不是打不贏你。是<strong>打贏你對他們沒好處</strong>。</p>
+
+  <ul style="list-style:none; margin:1rem 0;">
+    <li style="margin-bottom:.5rem">你的市場太小——他們的業務團隊不屑。</li>
+    <li style="margin-bottom:.5rem">你的價格太低——他們跟進會拉低利潤。</li>
+    <li>你砍掉的功能——他們的企業客戶不允許砍。</li>
+  </ul>
+
+  <p><strong>這就是你的機會。</strong></p>
+
+  <hr>
+
+  <h3>兩種模式。只有兩種。</h3>
+
+  <div class="duo">
+    <div>
+      <h4 class="highlight-teal">低端破壞</h4>
+      <p>「你的工具太貴太複雜。我只需要其中 10%。」</p>
+      <p style="margin-bottom:0">目標：<strong>被過度服務的人。</strong></p>
+    </div>
+    <div>
+      <h4 class="highlight-amber">新市場破壞</h4>
+      <p>「我想解決，但根本沒工具。」</p>
+      <p style="margin-bottom:0">目標：<strong>非消費者。</strong></p>
+    </div>
+  </div>
+
+  <h4>怎麼判斷？看替代方案。</h4>
+  <div style="display:grid;gap:.5rem;margin:1.2rem 0">
+    <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px">
+      <span style="flex:1">花大錢用複雜工具</span>
+      <span style="display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .7rem;background:rgba(45,125,138,.12);color:#5cc5d4;border-radius:20px;font-size:.8rem;font-weight:600;white-space:nowrap"><span style="width:6px;height:6px;border-radius:50%;background:#5cc5d4"></span>低端破壞</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px">
+      <span style="flex:1">用 Excel + 手動 + 忍耐</span>
+      <span style="display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .7rem;background:rgba(45,125,138,.12);color:#5cc5d4;border-radius:20px;font-size:.8rem;font-weight:600;white-space:nowrap"><span style="width:6px;height:6px;border-radius:50%;background:#5cc5d4"></span>低端破壞</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px">
+      <span style="flex:1">完全沒有解法</span>
+      <span style="display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .7rem;background:rgba(232,145,58,.12);color:var(--amber);border-radius:20px;font-size:.8rem;font-weight:600;white-space:nowrap"><span style="width:6px;height:6px;border-radius:50%;background:var(--amber)"></span>新市場破壞</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px">
+      <span style="flex:1">免費工具但痛苦地用</span>
+      <span style="display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .7rem;background:rgba(232,145,58,.12);color:var(--amber);border-radius:20px;font-size:.8rem;font-weight:600;white-space:nowrap"><span style="width:6px;height:6px;border-radius:50%;background:var(--amber)"></span>新市場破壞</span>
+    </div>
+  </div>
+
+  <details>
+    <summary>真實案例：小美的低端破壞 vs 阿凱的新市場破壞 <span class="sum-badge sum-badge-case">案例</span></summary>
+    <div class="detail-body">
+      <div class="duo" style="margin-top:0">
+        <div style="border-left:4px solid #5cc5d4">
+          <div class="case-header" style="margin-bottom:.5rem">
+            <div class="case-avatar" style="background:linear-gradient(135deg,#e87da0,#c75b7a);width:28px;height:28px;font-size:.7rem">美</div>
+            <div class="case-meta"><div class="case-name" style="font-size:.85rem">小美 → 低端破壞</div></div>
+          </div>
+          <p style="font-size:.85rem"><strong>替代方案</strong>：客服 SaaS（月費 NT$2,000+，50 個功能）</p>
+          <p style="font-size:.85rem"><strong>訊號</strong>：小賣家花大錢用複雜工具，但只用到其中 2 個功能。</p>
+          <p style="font-size:.85rem;margin-bottom:0"><strong>切入</strong>：「你的工具太貴太複雜。我只幫你做常見問答自動回覆這一件事。」</p>
+        </div>
+        <div style="border-left:4px solid var(--amber)">
+          <div class="case-header" style="margin-bottom:.5rem">
+            <div class="case-avatar" style="background:linear-gradient(135deg,#4a90d9,#3670a8);width:28px;height:28px;font-size:.7rem">凱</div>
+            <div class="case-meta"><div class="case-name" style="font-size:.85rem">阿凱 → 新市場破壞</div></div>
+          </div>
+          <p style="font-size:.85rem"><strong>替代方案</strong>：完全沒有。學員拍影片傳教練，教練免費回。</p>
+          <p style="font-size:.85rem"><strong>訊號</strong>：想解決但根本沒有工具。沒有「動作批改」的付費服務存在。</p>
+          <p style="font-size:.85rem;margin-bottom:0"><strong>切入</strong>：「目前零選項。我提供一個：NT$50/次，24 小時內回覆影片批改。」</p>
+        </div>
+      </div>
+      <p style="margin-top:1rem;margin-bottom:0;font-size:.85rem;color:var(--text-dim)"><strong>選不了怎麼辦？</strong> 小美選低端是因為有明確競品可以對比。阿凱選新市場是因為完全沒有替代方案。兩個都是好信號——關鍵是替代方案告訴你的，不是你猜的。</p>
+    </div>
+  </details>
+
+  <p class="transition">→ 找到角落了。接下來要畫一張圖。這張圖會告訴你——什麼不做。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 08 — PHASE 4
+     ════════════════════════════════════════════════ -->
+<section id="phase4">
+  <span class="phase-badge badge-pos">找到位置</span>
+  <h2>Phase 4：不做清單比功能清單更重要</h2>
+
+  <p>Strategy Canvas。橫軸是客戶在意的維度。縱軸是高低。</p>
+
+  <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.5rem 1rem;margin:1.5rem 0;overflow-x:auto">
+    <svg viewBox="0 0 520 220" style="width:100%;max-width:520px;display:block;margin:0 auto" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="30" x2="60" y2="180" stroke="#444" stroke-width="1"/>
+      <text x="20" y="45" fill="#888" font-size="12" font-family="-apple-system,sans-serif">高</text>
+      <text x="20" y="175" fill="#888" font-size="12" font-family="-apple-system,sans-serif">低</text>
+      <line x1="60" y1="180" x2="500" y2="180" stroke="#444" stroke-width="1"/>
+      <text x="100" y="200" fill="#888" font-size="11" font-family="-apple-system,sans-serif" text-anchor="middle">價格</text>
+      <text x="190" y="200" fill="#888" font-size="11" font-family="-apple-system,sans-serif" text-anchor="middle">易用</text>
+      <text x="280" y="200" fill="#888" font-size="11" font-family="-apple-system,sans-serif" text-anchor="middle">功能</text>
+      <text x="370" y="200" fill="#888" font-size="11" font-family="-apple-system,sans-serif" text-anchor="middle">速度</text>
+      <text x="460" y="200" fill="#888" font-size="11" font-family="-apple-system,sans-serif" text-anchor="middle">支援</text>
+      <line x1="60" y1="105" x2="500" y2="105" stroke="#2a2a2a" stroke-width="1" stroke-dasharray="4"/>
+      <polyline points="100,50 190,60 280,40 370,55 460,65" fill="none" stroke="#e05252" stroke-width="2.5" stroke-dasharray="6,4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="100" cy="50" r="4" fill="#e05252"/><circle cx="190" cy="60" r="4" fill="#e05252"/><circle cx="280" cy="40" r="4" fill="#e05252"/><circle cx="370" cy="55" r="4" fill="#e05252"/><circle cx="460" cy="65" r="4" fill="#e05252"/>
+      <polyline points="100,160 190,55 280,145 370,60 460,140" fill="none" stroke="#2D9D78" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="100" cy="160" r="5" fill="#2D9D78"/><circle cx="190" cy="55" r="5" fill="#2D9D78"/><circle cx="280" cy="145" r="5" fill="#2D9D78"/><circle cx="370" cy="60" r="5" fill="#2D9D78"/><circle cx="460" cy="140" r="5" fill="#2D9D78"/>
+      <line x1="300" y1="16" x2="330" y2="16" stroke="#e05252" stroke-width="2" stroke-dasharray="5,3"/>
+      <text x="336" y="20" fill="#e05252" font-size="11" font-family="-apple-system,sans-serif">競品：什麼都做，很貴</text>
+      <line x1="300" y1="30" x2="330" y2="30" stroke="#2D9D78" stroke-width="2"/>
+      <text x="336" y="34" fill="#2D9D78" font-size="11" font-family="-apple-system,sans-serif">你：形狀不同</text>
+    </svg>
+  </div>
+
+  <p><strong>如果你的曲線跟競品長一樣，只是全部更低——你不是創新者。你只是更爛的版本。</strong></p>
+  <p>你要的是：<strong>形狀不同。</strong></p>
+
+  <hr>
+
+  <h3>範例</h3>
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>維度</th><th style="color:var(--text-dim)">客服 SaaS</th><th style="color:var(--text-dim)">手動 LINE</th><th style="color:var(--amber)">你</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>價格</strong></td>
+        <td><span style="display:inline-block;background:rgba(224,82,82,.12);color:var(--red);padding:.15rem .5rem;border-radius:4px;font-size:.8rem">高</span></td>
+        <td><span style="display:inline-block;background:rgba(45,157,120,.12);color:var(--green);padding:.15rem .5rem;border-radius:4px;font-size:.8rem">低</span></td>
+        <td><span style="display:inline-block;background:rgba(45,157,120,.15);color:var(--green);padding:.15rem .6rem;border-radius:4px;font-size:.8rem;font-weight:700">低</span></td>
+      </tr>
+      <tr>
+        <td><strong>上手速度</strong></td>
+        <td><span style="display:inline-block;background:rgba(224,82,82,.12);color:var(--red);padding:.15rem .5rem;border-radius:4px;font-size:.8rem">低</span></td>
+        <td><span style="display:inline-block;background:rgba(45,157,120,.12);color:var(--green);padding:.15rem .5rem;border-radius:4px;font-size:.8rem">高</span></td>
+        <td><span style="display:inline-block;background:rgba(45,157,120,.15);color:var(--green);padding:.15rem .6rem;border-radius:4px;font-size:.8rem;font-weight:700">高</span></td>
+      </tr>
+      <tr>
+        <td><strong>功能數量</strong></td>
+        <td>50+</td>
+        <td>1</td>
+        <td><span style="display:inline-block;background:rgba(232,145,58,.15);color:var(--amber);padding:.15rem .6rem;border-radius:4px;font-size:.8rem;font-weight:700">3</span></td>
+      </tr>
+      <tr>
+        <td><strong>常見問答</strong></td>
+        <td>有</td>
+        <td style="color:var(--text-dim)">無</td>
+        <td><span style="display:inline-block;background:rgba(45,157,120,.15);color:var(--green);padding:.15rem .6rem;border-radius:4px;font-size:.8rem;font-weight:700">有</span></td>
+      </tr>
+      <tr>
+        <td><strong>訂單追蹤</strong></td>
+        <td>有</td>
+        <td>半套</td>
+        <td><span class="cell-nope">不做</span></td>
+      </tr>
+      <tr>
+        <td><strong>多平台</strong></td>
+        <td>有</td>
+        <td style="color:var(--text-dim)">無</td>
+        <td><span class="cell-nope">不做</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>功能數量：3。不是 50。訂單追蹤：不做。多平台：不做。</p>
+  <p><strong>因為月營收 3 萬的小賣家用 Excel 管訂單就夠了。他們需要的只是不要再重複回答尺寸和運費。</strong></p>
+
+  <blockquote>
+    <p>你的不做清單，必須比你的要做清單長。<br>如果不做比要做少——你砍得不夠。</p>
+  </blockquote>
+
+  <details>
+    <summary>真實案例：阿凱的策略圖 — 砍掉「線上課」反而更聚焦 <span class="sum-badge sum-badge-case">案例</span></summary>
+    <div class="detail-body">
+      <div class="case-header">
+        <div class="case-avatar" style="background:linear-gradient(135deg,#4a90d9,#3670a8)">凱</div>
+        <div class="case-meta">
+          <div class="case-name">阿凱 — 動作批改服務</div>
+          <div class="case-desc">從「做線上課」砍到只做「影片批改」</div>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>維度</th><th style="color:var(--text-dim)">線上課平台</th><th style="color:var(--text-dim)">免費問教練</th><th style="color:var(--amber)">阿凱</th></tr></thead>
+        <tbody>
+          <tr><td><strong>價格</strong></td><td>NT$3,000+/月</td><td>NT$0</td><td><span style="display:inline-block;background:rgba(45,157,120,.15);color:var(--green);padding:.15rem .5rem;border-radius:4px;font-size:.8rem;font-weight:700">NT$50/次</span></td></tr>
+          <tr><td><strong>回覆速度</strong></td><td>無互動</td><td>不一定</td><td><span style="display:inline-block;background:rgba(45,157,120,.15);color:var(--green);padding:.15rem .5rem;border-radius:4px;font-size:.8rem;font-weight:700">24hr 內</span></td></tr>
+          <tr><td><strong>個人化</strong></td><td>一對多</td><td>一對一</td><td><span style="display:inline-block;background:rgba(45,157,120,.15);color:var(--green);padding:.15rem .5rem;border-radius:4px;font-size:.8rem;font-weight:700">一對一</span></td></tr>
+          <tr><td><strong>課程內容</strong></td><td>完整課綱</td><td>無</td><td><span class="cell-nope">不做</span></td></tr>
+          <tr><td><strong>社群功能</strong></td><td>有</td><td>無</td><td><span class="cell-nope">不做</span></td></tr>
+          <tr><td><strong>證書/進度</strong></td><td>有</td><td>無</td><td><span class="cell-nope">不做</span></td></tr>
+        </tbody>
+      </table>
+      <p><strong>不做清單</strong>：</p>
+      <ol style="margin:.5rem 0 0 1.2rem;font-size:.9rem">
+        <li>不做完整線上課 — 學員只需要「這個動作對不對」的答案</li>
+        <li>不做社群 — 學員之間不需要互動，他們需要教練的眼睛</li>
+        <li>不做排課系統 — 不需要排課，學員隨時傳影片</li>
+        <li>不做 App — LINE 就夠了</li>
+      </ol>
+      <p style="margin-top:.8rem;margin-bottom:0"><strong>差異化摘要</strong>：「我用『24 小時影片批改回覆』服務沒有任何付費管道的健身自主訓練者。刻意不做線上課、不做社群、不做 App。因為學員要的不是課，是『教練你看一下這樣對嗎』。」</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>紅隊打臉實錄：AI 怎麼挑戰小美的策略 <span class="sum-badge sum-badge-warn">紅隊</span></summary>
+    <div class="detail-body">
+      <p><strong>紅隊 Prompt 4B 的 AI 回覆摘錄</strong>：</p>
+      <div class="card card-red" style="margin:.5rem 0">
+        <p><strong>挑戰 #2 — 「更便宜」不等於「破壞」</strong></p>
+        <p>你的曲線在「價格」和「功能數」都比客服 SaaS 低，但在「常見問答」和「上手速度」比他們高。這<strong>形狀是對的</strong>——你不只是便宜貨，你在做不同的事。</p>
+        <p><strong>但注意</strong>：「中文在地化」這個維度你跟手動 LINE 一樣高，這不是你的獨特優勢，是基本盤。考慮換成「設定代勞」——競品要客戶自己設定，你幫他做好，這才是差異。</p>
+      </div>
+      <div class="card card-red" style="margin:.5rem 0">
+        <p><strong>挑戰 #5 — 「不做」的代價</strong></p>
+        <p style="margin-bottom:0">你不做「訂單追蹤」。但如果小賣家的客戶問「我的東西寄了嗎？」——這個問題會佔常見問答的多少比例？如果超過 30%，你的自動回覆會有三成問題回答不了。<strong>驗證方式</strong>：問小美她每天被問的問題中，有幾個跟訂單有關。</p>
+      </div>
+      <p style="margin-bottom:0"><strong>小美的調整</strong>：她問了小美，訂單相關只佔 15%。安全。但她把「中文在地化」換成了「設定代勞」——這個維度競品完全沒有。</p>
+    </div>
+  </details>
+
+  <p class="transition">→ 策略有了。接下來——今晚就能做的東西。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 09 — PHASE 5
+     ════════════════════════════════════════════════ -->
+<section id="phase5">
+  <span class="phase-badge badge-act">出手驗證</span>
+  <h2>Phase 5：不寫程式。今晚做一次。收到錢。</h2>
+
+  <p>這不是 MVP。</p>
+
+  <div class="duo">
+    <div style="border-left:4px solid var(--red);text-align:center">
+      <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--red);margin-bottom:.8rem;font-weight:700">MVP</div>
+      <div style="margin-bottom:.8rem"><span style="display:inline-block;text-decoration:line-through;color:var(--text-dim);padding:.3rem .7rem;background:rgba(224,82,82,.06);border-radius:6px;font-size:.85rem">功能最少的軟體</span></div>
+      <div style="font-size:.85rem;color:var(--text-dim);margin-bottom:.3rem">幾週到幾月</div>
+      <div style="font-size:.85rem;color:var(--text-dim)">程式語言、框架</div>
+    </div>
+    <div style="border-left:4px solid var(--green);text-align:center">
+      <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:.8rem;font-weight:700">我們做的</div>
+      <div style="margin-bottom:.8rem"><span style="display:inline-block;color:#fff;font-weight:700;padding:.3rem .7rem;background:rgba(45,157,120,.12);border-radius:6px;font-size:.85rem">不需要任何程式碼</span></div>
+      <div style="font-size:.85rem;color:#fff;font-weight:600;margin-bottom:.3rem">3 小時</div>
+      <div style="font-size:.85rem;color:#fff">Google Doc、LINE、電話</div>
+    </div>
+  </div>
+
+  <p><strong>如果你用手工做一次都沒人買——寫成程式也不會有人買。</strong></p>
+
+  <hr>
+
+  <h3>手工交付步驟</h3>
+  <div class="timeline">
+    <div class="step"><strong>[30 min]</strong> 跟客戶通話，列出 10 個常見問題</div>
+    <div class="step"><strong>[60 min]</strong> 寫好 10 組問答模板</div>
+    <div class="step"><strong>[30 min]</strong> 幫他在 LINE 官方帳號設定自動回覆</div>
+    <div class="step"><strong>[30 min]</strong> 測試 + 教他修改</div>
+    <div class="step"><strong>[1 週後]</strong> 檢查效果，調整 3 個回覆</div>
+  </div>
+
+  <p>工具：電話。Google Doc。LINE 後台。<br>沒有任何一步需要寫程式。</p>
+
+  <div class="card card-amber">
+    <p style="font-size:1.4rem;margin-bottom:.5rem"><strong>定價：NT$800。一次性。不滿意全退。</strong></p>
+  </div>
+
+  <h4>第一單可能虧。沒關係。</h4>
+  <p>成本：3hr &times; NT$300/hr = NT$900<br>
+  收入：NT$800<br>
+  毛利：<span class="highlight-red">-NT$100</span></p>
+
+  <p><strong>但你買到了什麼？</strong> 真實的客戶回饋。真實的使用數據。真實的「這東西有沒有用」的答案。<br>這些東西，三個月的市場研究買不到。</p>
+
+  <p class="transition">→ 產品設計好了。但在你按發送之前——一個安全檢查。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 10 — PHASE 6
+     ════════════════════════════════════════════════ -->
+<section id="phase6">
+  <span class="phase-badge badge-act">出手驗證</span>
+  <h2>Phase 6：確認一件事——大公司不會來。</h2>
+
+  <p>很多小產品不是做得不好。是大公司花一個週末就複製了。</p>
+  <p>所以你要問自己<strong>四個問題</strong>。</p>
+
+  <div class="card card-green">
+    <h4>Q1：他們的錢從哪來？</h4>
+    <p>你的客群是不是競品的利潤來源？如果不是——他們不會為了你動。 <span class="highlight-green">&#10003;</span></p>
+  </div>
+  <div class="card card-green">
+    <h4>Q2：他們敢推低價版嗎？</h4>
+    <p>如果推了，高價客戶會降級？如果會——他們不敢推。 <span class="highlight-green">&#10003;</span></p>
+  </div>
+  <div class="card card-green">
+    <h4>Q3：他們砍得掉功能嗎？</h4>
+    <p>企業客戶允許他們砍嗎？如果不允許——他們砍不了。 <span class="highlight-green">&#10003;</span></p>
+  </div>
+  <div class="card card-green">
+    <h4>Q4：他們的業務在乎你嗎？</h4>
+    <p>業務一單做 NT$50,000。你一單 NT$800。業務看你一眼嗎？不會。 <span class="highlight-green">&#10003;</span></p>
+  </div>
+
+  <h3>判斷</h3>
+  <div style="display:grid;gap:.5rem;margin:1.2rem 0">
+    <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;background:rgba(45,157,120,.08);border:1px solid rgba(45,157,120,.2);border-radius:10px">
+      <span style="font-weight:700;color:var(--green);min-width:60px">4 個 &#10003;</span>
+      <span style="flex:1;color:#fff;font-weight:600">出手。他們不會來。</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;background:rgba(45,157,120,.05);border:1px solid rgba(45,157,120,.12);border-radius:10px">
+      <span style="font-weight:700;color:var(--green);min-width:60px">3 個 &#10003;</span>
+      <span style="flex:1">出手。但要快。</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;background:rgba(232,145,58,.06);border:1px solid rgba(232,145,58,.15);border-radius:10px">
+      <span style="font-weight:700;color:var(--amber);min-width:60px">2 個 &#10003;</span>
+      <span style="flex:1">考慮調整。</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;background:rgba(224,82,82,.06);border:1px solid rgba(224,82,82,.15);border-radius:10px">
+      <span style="font-weight:700;color:var(--red);min-width:60px">&le; 1 個</span>
+      <span style="flex:1">回去重選。</span>
+    </div>
+  </div>
+
+  <p class="transition">→ 安全檢查通過。最後一步——把所有東西收成一張紙，然後按發送。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 11 — PHASE 7
+     ════════════════════════════════════════════════ -->
+<section id="phase7">
+  <span class="phase-badge badge-act">出手驗證</span>
+  <h2>Phase 7：一頁紙。72 小時。第一塊錢。</h2>
+
+  <p>六個 Phase 的所有產出，收成一頁 A4。就一頁。多了你也不會看。</p>
+
+  <div style="background:var(--bg-card);border:2px solid var(--amber);border-radius:14px;padding:0;margin:1.5rem 0;overflow:hidden;max-width:480px;box-shadow:0 8px 32px rgba(232,145,58,.08)">
+    <div style="background:rgba(232,145,58,.1);padding:.6rem 1.4rem;border-bottom:1px solid rgba(232,145,58,.15);display:flex;align-items:center;gap:.6rem">
+      <span style="font-size:1rem">📄</span>
+      <span style="font-size:.75rem;font-weight:700;letter-spacing:.1em;color:var(--amber);text-transform:uppercase">One-Page A4</span>
+    </div>
+    <div style="padding:1.2rem 1.4rem;display:flex;flex-direction:column;gap:.7rem">
+      <div style="display:flex;align-items:center;gap:.8rem">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0"></span>
+        <span><strong>問題</strong><span style="color:var(--text-dim)">（一句話）</span></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.8rem">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0"></span>
+        <span><strong>誰</strong><span style="color:var(--text-dim)">（具體到能打電話）</span></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.8rem">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0"></span>
+        <span><strong>只做</strong> / <strong>不做</strong> / <span style="color:var(--text-dim)">大公司不跟進因為</span></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.8rem">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0"></span>
+        <span><strong>賣什麼</strong> / <strong>怎麼做</strong> / <strong>多少錢</strong></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.8rem">
+        <span style="width:6px;height:6px;border-radius:50%;background:#4a90d9;flex-shrink:0"></span>
+        <span><strong>前 10 個客戶</strong><span style="color:var(--text-dim)">（3 個有名字）</span></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.8rem;padding:.5rem .7rem;background:rgba(232,145,58,.06);border-radius:8px;border:1px solid rgba(232,145,58,.12)">
+        <span style="width:6px;height:6px;border-radius:50%;background:#fff;flex-shrink:0"></span>
+        <span><strong style="color:var(--amber)">72 小時</strong>：每天 3 個動作</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>72 小時行動計畫</h3>
+
+  <div style="display:flex;flex-direction:column;gap:1rem;margin:1.5rem 0">
+    <!-- Day 1 -->
+    <div style="background:var(--bg-card);border:1px solid rgba(74,144,217,.2);border-radius:12px;padding:1.2rem 1.4rem;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#4a90d9,#6baaed)"></div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;color:#6baaed;margin-bottom:.8rem">DAY 1</div>
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <div style="display:flex;align-items:center;gap:.8rem;padding:.5rem .7rem;background:rgba(255,255,255,.02);border-radius:8px">
+          <span style="width:24px;height:24px;border-radius:50%;background:rgba(74,144,217,.2);color:#6baaed;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">1</span>
+          <span style="flex:1"><strong>發 LINE 給小美</strong></span>
+          <span style="font-size:.8rem;color:var(--text-dim)">約 30 分鐘通話</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.8rem;padding:.5rem .7rem;background:rgba(255,255,255,.02);border-radius:8px">
+          <span style="width:24px;height:24px;border-radius:50%;background:rgba(74,144,217,.2);color:#6baaed;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">2</span>
+          <span style="flex:1"><strong>發 Messenger 給阿珍</strong></span>
+          <span style="font-size:.8rem;color:var(--text-dim)">拿到回覆</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.8rem;padding:.5rem .7rem;background:rgba(255,255,255,.02);border-radius:8px">
+          <span style="width:24px;height:24px;border-radius:50%;background:rgba(74,144,217,.2);color:#6baaed;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">3</span>
+          <span style="flex:1"><strong>開好收款連結</strong></span>
+          <span style="font-size:.8rem;color:var(--text-dim)">連結可用</span>
+        </div>
+      </div>
+    </div>
+    <!-- Day 2 -->
+    <div style="background:var(--bg-card);border:1px solid rgba(45,157,120,.2);border-radius:12px;padding:1.2rem 1.4rem;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green),#5dd4a8)"></div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--green);margin-bottom:.8rem">DAY 2</div>
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <div style="display:flex;align-items:center;gap:.8rem;padding:.5rem .7rem;background:rgba(255,255,255,.02);border-radius:8px">
+          <span style="width:24px;height:24px;border-radius:50%;background:rgba(45,157,120,.2);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">4</span>
+          <span style="flex:1"><strong>跟小美通話</strong></span>
+          <span style="font-size:.8rem;color:var(--text-dim)">列出 10 個常見問答</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.8rem;padding:.5rem .7rem;background:rgba(255,255,255,.02);border-radius:8px">
+          <span style="width:24px;height:24px;border-radius:50%;background:rgba(45,157,120,.2);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">5</span>
+          <span style="flex:1"><strong>手工做一次</strong></span>
+          <span style="font-size:.8rem;color:var(--text-dim)">幫小美設定好</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.8rem;padding:.5rem .7rem;background:rgba(255,255,255,.02);border-radius:8px">
+          <span style="width:24px;height:24px;border-radius:50%;background:rgba(45,157,120,.2);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">6</span>
+          <span style="flex:1"><strong>在 FB 社團發文</strong></span>
+          <span style="font-size:.8rem;color:var(--text-dim)">3 個回覆</span>
+        </div>
+      </div>
+    </div>
+    <!-- Day 3 -->
+    <div style="background:var(--bg-card);border:1px solid rgba(232,145,58,.25);border-radius:12px;padding:1.2rem 1.4rem;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(232,145,58,.06)">
+      <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--amber),#f0c060)"></div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--amber);margin-bottom:.8rem">DAY 3 — 出手</div>
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <div style="display:flex;align-items:center;gap:.8rem;padding:.5rem .7rem;background:rgba(255,255,255,.02);border-radius:8px">
+          <span style="width:24px;height:24px;border-radius:50%;background:rgba(232,145,58,.2);color:var(--amber);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">7</span>
+          <span style="flex:1"><strong>確認效果</strong></span>
+          <span style="font-size:.8rem;color:var(--text-dim)">拿到回饋</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.8rem;padding:.5rem .7rem;background:rgba(45,157,120,.06);border:1px solid rgba(45,157,120,.15);border-radius:8px">
+          <span style="width:24px;height:24px;border-radius:50%;background:rgba(45,157,120,.25);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">8</span>
+          <span style="flex:1"><strong>發預售訊息</strong></span>
+          <span style="font-size:.85rem;color:var(--green);font-weight:700">&ge; 1 人付款</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:.8rem;padding:.5rem .7rem;background:rgba(255,255,255,.02);border-radius:8px">
+          <span style="width:24px;height:24px;border-radius:50%;background:rgba(232,145,58,.2);color:var(--amber);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">9</span>
+          <span style="flex:1"><strong>收錢</strong></span>
+          <span style="font-size:.8rem;color:var(--text-dim)">或記錄拒絕原因</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>每一個動作都是<strong>物理動作</strong>。發訊息。打電話。做模板。收錢。<br>
+  沒有「研究市場」。沒有「思考策略」。沒有「再看看」。</p>
+
+  <div class="duo">
+    <div style="border-left:4px solid var(--green)">
+      <h4 class="highlight-green">有人付錢了</h4>
+      <p style="margin-bottom:0">你找到了種子。</p>
+    </div>
+    <div style="border-left:4px solid var(--amber)">
+      <h4 class="highlight-amber">沒人付錢</h4>
+      <p style="margin-bottom:0">你知道為什麼。這比「不知道做什麼」好一百倍。</p>
+    </div>
+  </div>
+
+  <p class="transition">→ 七步講完了。但知道不等於做到。讓我教你怎麼用。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 12 — AI GUIDANCE
+     ════════════════════════════════════════════════ -->
+<section id="guidance">
+  <h2>用 AI 跑這套框架，三件事你必須知道。</h2>
+
+  <div class="card card-red">
+    <h4>第一件：<code>{{}}</code> 是你填的。不是 AI。</h4>
+    <p style="margin-bottom:0">Prompt 裡的雙大括號——那是你的真實資料。你的人名、你的觀察、你的數字。<br>如果你讓 AI 連這些都幫你編——你不是在用工具。你是在自我欺騙。</p>
+  </div>
+
+  <div class="card card-amber">
+    <h4>第二件：每個 Phase 都有一條 AI 過不去的線。</h4>
+    <pre style="margin:1rem 0 0"><code>Phase 1 → 「我認識這個人嗎？」     ← 你答
+Phase 2 → 物理量畫布               ← 你填
+Phase 3 → 選哪種破壞模式           ← 你選
+Phase 4 → 不做清單確認             ← 你定
+Phase 5 → 桌面演練                 ← 你跑
+Phase 6 → 最終判斷                 ← 你下
+Phase 7 → 按發送                   ← 你按</code></pre>
+  </div>
+
+  <div class="card card-teal">
+    <h4>第三件：紅隊 Prompt 是用來打你自己臉的。</h4>
+    <p>Phase 4、5、7 都有紅隊 Prompt。用法：</p>
+    <ol style="margin:.5rem 0 0 1.2rem">
+      <li>跑完主 Prompt。拿到產出。</li>
+      <li>把產出貼進紅隊 Prompt。</li>
+      <li>AI 會找你的漏洞。</li>
+      <li><strong>不要辯解。調整。</strong></li>
+    </ol>
+    <p style="margin-top:.75rem;margin-bottom:0">如果紅隊讓你覺得整個策略都有問題——<strong>恭喜。你在花錢之前發現了。</strong></p>
+  </div>
+
+  <p class="transition">→ 講夠了。動手。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 13 — PRACTICE
+     ════════════════════════════════════════════════ -->
+<section id="practice">
+  <h2>你的第一次。就是現在。10 分鐘。</h2>
+
+  <p>拿出手機。打開你的 AI 聊天工具。ChatGPT、Claude、Gemini——哪個都行。</p>
+
+  <div class="card card-teal">
+    <h4>[0:00 - 2:00] 找素材</h4>
+    <p style="margin-bottom:0">三選一：打開最近逛的社群找一則抱怨 / 想一件你覺得「好煩」的事 / 看備忘錄裡的 idea</p>
+  </div>
+
+  <div class="card card-green">
+    <h4>[2:00 - 7:00] 貼進 AI</h4>
+    <p style="margin-bottom:0">有素材 → 用 Prompt 1A。只有想法 → 用 Prompt 1C（AI 會問你問題）。</p>
+  </div>
+
+  <div class="card card-amber">
+    <h4>[7:00 - 10:00] 問自己三個問題</h4>
+    <ul class="checklist">
+      <li>「誰」那一欄——我能說出真人名字嗎？</li>
+      <li>「現行解法」——是真的還是 AI 猜的？</li>
+      <li>如果今晚幫他做一次——我會做什麼？</li>
+    </ul>
+  </div>
+
+  <p style="margin-top:1.5rem">10 分鐘後，分享一句話：</p>
+  <blockquote><p>「當 _____ 在 _____ 時，他想要 _____，但現在只能 _____。」</p></blockquote>
+
+  <p class="transition">→ 你們剛剛做的就是 Phase 1。現在看一個完整案例——從頭到尾。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 14 — CASE STUDY
+     ════════════════════════════════════════════════ -->
+<section id="case">
+  <h2>一個人。一個問題。七步。收到錢。</h2>
+
+  <p>起點：</p>
+  <blockquote><p>「我想做一個 AI 客服機器人。」</p></blockquote>
+  <p>聽起來很大。讓我們跑一次框架。</p>
+
+  <div class="timeline">
+    <div class="step"><strong>Phase 1</strong> — 去社群撈了 3 則留言 + 跟朋友小美聊了天 → 拿到 5 個痛點</div>
+    <div class="step"><strong>Phase 2</strong> — 5 個痛點聚合成一個問題 → 「小賣家每天花 2 小時重複回答尺寸和運費」</div>
+    <div class="step"><strong>Phase 3</strong> — 替代方案：客服 SaaS 月費 2000，太貴太複雜 → 低端破壞</div>
+    <div class="step"><strong>Phase 4</strong> — 畫策略圖 → 只做常見問答。不做訂單。不做多平台。不做 AI 聊天。</div>
+    <div class="step"><strong>Phase 5</strong> — 手工交付 → 我親自幫你設定 LINE 自動回覆。3 小時。NT$800。</div>
+    <div class="step"><strong>Phase 6</strong> — 四個問題全 ✅ → 大公司不會來。</div>
+    <div class="step"><strong>Phase 7</strong> — 72 小時 → Day 1 發 LINE 給小美。</div>
+  </div>
+
+  <hr>
+
+  <div class="duo">
+    <div style="text-align:center;border-left:4px solid var(--red)">
+      <p style="font-size:.8rem;color:var(--text-dim);margin-bottom:.3rem">出發</p>
+      <p style="margin-bottom:0"><strong>「AI 客服機器人」</strong></p>
+    </div>
+    <div style="text-align:center;border-left:4px solid var(--green)">
+      <p style="font-size:.8rem;color:var(--text-dim);margin-bottom:.3rem">到達</p>
+      <p style="margin-bottom:0"><strong>「我親自幫你設定 LINE 自動回覆」</strong></p>
+    </div>
+  </div>
+
+  <p style="text-align:center;margin-top:1rem">
+    範圍小了 <span class="highlight-red" style="font-size:1.3rem;font-weight:700">100 倍</span>。
+    離第一塊錢近了 <span class="highlight-green" style="font-size:1.3rem;font-weight:700">100 倍</span>。
+  </p>
+
+  <p class="transition">→ 故事很美。但路上有坑。讓我告訴你在哪裡。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 15 — PITFALLS
+     ════════════════════════════════════════════════ -->
+<section id="pitfalls">
+  <h2>五個坑。每一個都值三個月。</h2>
+
+  <div class="pit">
+    <h4>#1 跳過看問題，直接做產品。</h4>
+    <p class="wrong">「我已經知道要做什麼了。」</p>
+    <p class="right">花 1 小時看清問題。或花 3 個月做錯方向。你選。</p>
+  </div>
+
+  <div class="pit">
+    <h4>#2 策略圖跟競品長一樣。</h4>
+    <p class="wrong">你的曲線跟競品平行，只是全部往下。</p>
+    <p class="right">形狀要不同。不是全部更低。</p>
+  </div>
+
+  <div class="pit">
+    <h4>#3 不做清單太短。</h4>
+    <p class="wrong">「這個也想做、那個也想做。」</p>
+    <p class="right">什麼都做 = 什麼都做不好 = 跟大公司正面對決。你會輸。</p>
+  </div>
+
+  <div class="pit">
+    <h4>#4 行動計畫全是代理動作。</h4>
+    <p class="wrong">Day 1 做 logo。Day 2 寫 landing page。Day 3 選技術。</p>
+    <p class="right">Day 1 第一步 = 發一封訊息。</p>
+  </div>
+
+  <div class="pit">
+    <h4>#5 紅隊打臉就放棄。</h4>
+    <p class="wrong">「AI 說我的策略有問題。算了不做了。」</p>
+    <p class="right">調整。不是放棄。每次重來都更接近答案。</p>
+  </div>
+
+  <p class="transition">→ 坑都知道了。最後確認——你準備好了嗎？</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 16 — ASSESSMENT
+     ════════════════════════════════════════════════ -->
+<section id="assessment">
+  <h2>出門前。三個問題。</h2>
+
+  <p>不是考試。是你問自己。</p>
+
+  <div class="card" style="border-left:4px solid #4a90d9">
+    <h4>問題一：你記住了什麼？</h4>
+    <ul class="checklist">
+      <li>7 步：看清 → 找位置 → 出手</li>
+      <li>物理量：具體的人、付錢的痛、手工交付、收款管道</li>
+      <li>低端破壞 vs 新市場破壞</li>
+    </ul>
+    <p style="margin-bottom:0;color:var(--text-dim)">記住一半就夠。Prompt 資料夾會幫你記剩下的。</p>
+  </div>
+
+  <div class="card card-green">
+    <h4>問題二：你拿到工具了嗎？</h4>
+    <ul class="checklist">
+      <li>知道 Prompt 在哪裡</li>
+      <li>知道 <code>{{}}</code> 是自己填的</li>
+      <li>知道每步有什麼 AI 做不了</li>
+    </ul>
+  </div>
+
+  <div class="card card-amber">
+    <h4>問題三：你能出手嗎？</h4>
+    <ul class="checklist">
+      <li>你有至少 1 個痛點的一句話描述</li>
+      <li>你能說出 1 個認識的人的名字</li>
+      <li>你知道回家第一步做什麼</li>
+    </ul>
+    <p style="margin-top:.75rem;margin-bottom:0">如果第三組一個都打不了——等一下下課找我。我們聊 5 分鐘。</p>
+  </div>
+
+  <hr>
+
+  <p>如果你只記住一件事，記這個：</p>
+
+  <blockquote style="font-size:1.15rem">
+    <p><strong>找一個你認識的人。問他：「如果我幫你做 X，你願意付 Y 嗎？」</strong></p>
+    <p style="margin-bottom:0">整套框架。濃縮成這一句。</p>
+  </blockquote>
+
+  <p class="transition">→ 最後一件事。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 17 — TRANSFER
+     ════════════════════════════════════════════════ -->
+<section id="transfer">
+  <h2>72 小時。從現在開始算。</h2>
+
+  <p>不是下週一。不是「有空的時候」。<strong>從你走出這個門開始。72 小時。</strong></p>
+
+  <div class="duo" style="grid-template-columns:1fr 1fr 1fr">
+    <div style="border-left:4px solid #4a90d9;text-align:center">
+      <h4 style="color:#6baaed">Day 1</h4>
+      <p style="margin-bottom:0">看清問題<br><small>跑 P1-3</small></p>
+    </div>
+    <div style="border-left:4px solid var(--green);text-align:center">
+      <h4 class="highlight-green">Day 2</h4>
+      <p style="margin-bottom:0">找到位置<br><small>跑 P4-6</small></p>
+    </div>
+    <div style="border-left:4px solid var(--amber);text-align:center">
+      <h4 class="highlight-amber">Day 3</h4>
+      <p style="margin-bottom:0">出手<br><small>跑 P7 + 發訊息</small></p>
+    </div>
+  </div>
+
+  <h3>你需要的工具</h3>
+  <table>
+    <thead><tr><th>東西</th><th>用途</th></tr></thead>
+    <tbody>
+      <tr><td>7 份 Prompt</td><td>複製貼上，跑完整個流程</td></tr>
+      <tr><td>使用指南</td><td>卡住的時候看</td></tr>
+      <tr><td>產出範本</td><td>不知道產出該長什麼樣的時候看</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <p>72 小時後你會知道兩件事之一。</p>
+  <p><span class="highlight-green">有人付錢了</span>——你找到了一個生意的種子。</p>
+  <p><span class="highlight-amber">沒人付錢</span>——你知道了為什麼沒人付。</p>
+  <p><strong>兩個都是贏。</strong></p>
+  <p>唯一輸的是：什麼都沒做。</p>
+
+  <blockquote>
+    <p>現在在心裡決定一個日期。<br>
+    <strong>我要在 ___月___日 之前，發出我的第一封預售訊息。</strong></p>
+  </blockquote>
+
+  <p class="transition">→ 最後一張。</p>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SLIDE 18 — CLOSING
+     ════════════════════════════════════════════════ -->
+<section id="closing" style="min-height:80vh;display:flex;flex-direction:column;justify-content:center;text-align:center">
+  <blockquote style="border:none;background:none;text-align:center;font-size:1.1rem;line-height:2;max-width:500px;margin:0 auto 3rem">
+    <p>這七步的全部價值，</p>
+    <p>都在最後一個動作。</p>
+    <p>你發出了一封訊息。</p>
+    <p>有人付了錢。或沒有。</p>
+    <p style="margin-bottom:0">不管哪個，你都比昨天更接近答案。</p>
+  </blockquote>
+
+  <h1 style="font-size:4rem;font-weight:800;color:#fff;letter-spacing:-.02em">去做吧。</h1>
+</section>
+
+</main>
+
+<!-- Back to top -->
+<button class="top-btn" id="topBtn" aria-label="Back to top">&uarr;</button>
+
+<script>
+  // Navigation highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const topBtn = document.getElementById('topBtn');
+  const navToggle = document.getElementById('navToggle');
+  const sideNav = document.getElementById('sideNav');
+
+  function onScroll() {
+    const scrollY = window.scrollY;
+    // Active section
+    let current = '';
+    sections.forEach(s => {
+      if (scrollY >= s.offsetTop - 200) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+    // Top button
+    topBtn.classList.toggle('visible', scrollY > 600);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Mobile nav
+  navToggle.addEventListener('click', () => sideNav.classList.toggle('open'));
+  navLinks.forEach(a => a.addEventListener('click', () => sideNav.classList.remove('open')));
+</script>
+</body>
+</html>
