@@ -1,9 +1,11 @@
 # FirstDollar — 策略補遺：牙刷檢驗法 × 護城河 × 飛輪 × 核心模組 × 資源整合
 
-> **版本：** v1.0 ｜ **日期：** 2026-04-09 ｜ **狀態：** 草稿
-> **配套文件：** [`firstdollar_prd.md`](./firstdollar_prd.md)
+> **版本：** v2.0 ｜ **日期：** 2026-04-09 ｜ **狀態：** 草稿
+> **配套文件：** [`firstdollar_prd.md`](./firstdollar_prd.md)（v2.0）
 >
 > 本文件是 PRD 的策略延伸。PRD 回答「要做什麼」；本文件回答「為什麼這能活、靠什麼滾、需要哪些關鍵資源」。
+>
+> **v2.0 重大變更：** 經第一性原理壓力測試（S1→F→S2），護城河策略從「建造護城河」轉為「繞過既有護城河」。新增 §2.5 護城河繞行策略、§4.4 Phase 0 手工模組定義。整合 `socratic_first_principles_rnd_workflow.md` 與 `first_principles_playbook.md` §2 物理量的檢驗結果。
 
 ---
 
@@ -11,10 +13,10 @@
 
 | 維度 | 結論 |
 | :--- | :--- |
-| **牙刷檢驗** | 當前 PRD 只有 **7 天 Sprint**，通不過牙刷檢驗（用完就走）。必須補上三個 always-on 模組（Daily Card / Revenue Ticker / Audience Signal Feed），才有每日回訪的理由。 |
-| **最強護城河** | (1) 真實金流數據 × (2) Offer 模板庫（越多人用越準）× (3) 反 idea-scoring 的品牌立場（競品無法模仿，除非否定自家商業模式） |
-| **主飛輪** | **Offer Template Flywheel** — 使用者成功 Sprint → 匿名化 offer → 下次使用者更容易成功 → 更多成功 → 更多模板。這是唯一有規模效應的飛輪。 |
-| **必要整合** | Build：Sprint Engine、Offer Vault、Revenue Telemetry、Co-founder Memory ｜ Buy：Stripe / TapPay / Resend / Supabase / LLM API ｜ Partner：LINE OA、創作者 affiliate、台灣金流夥伴 |
+| **牙刷檢驗** | 當前 PRD 只有 **7 天 Sprint**，通不過牙刷檢驗（用完就走）。必須補上三個 always-on 模組（Daily Card / Revenue Ticker / Audience Signal Feed），才有每日回訪的理由。**但 Phase 0 不需要通過牙刷檢驗 — 先驗證命題再談留存。** |
+| **護城河策略（v2.0 修正）** | **不建護城河，繞護城河。** 不碰金流代收（避開金管會）、不做 LINE OA 系統推播（PM 親自 ping）、不建 AI 推薦（PM 就是推薦引擎）。Phase 0 唯一的護城河 = 反 idea-scoring 品牌立場（M3）+ PM 的人肉投入 |
+| **主飛輪（v2.0 修正）** | Phase 0：**Human Sprint Flywheel** — PM 陪跑 → 學到 pattern → 下次陪跑更有效 → 成功率上升 → 口碑帶來新使用者。Phase 1+：轉為 Offer Template Flywheel（系統化） |
+| **必要整合（v2.0 修正）** | **Phase 0**：PM 的時間、LINE 個人帳號、Google Doc、Lemon Squeezy 免費帳戶 ｜ **Phase 1**：Build（Sprint Engine、Offer Vault、Revenue Telemetry）｜ Buy（Stripe / TapPay / Resend / Supabase / LLM API）｜ Partner（LINE OA、創作者 affiliate） |
 
 ---
 
@@ -90,6 +92,39 @@ PRD 核心是 **7-Day Sprint Engine**。Sprint 本質是「高強度、短週期
 | 允許使用者 export 所有資料後離開無 friction | 削弱 M4，但完全禁止會傷害信任 → 需設計平衡 |
 | 接受 Enterprise 大單改客製 | 稀釋 PM 注意力，延緩 M1/M2 累積 |
 
+### 2.5 護城河繞行策略（v2.0 新增 — S1→F→S2 壓測結果）
+
+> **核心洞察**：v1.0 的 MVP 路徑正面撞上四道既有護城河。經 `first_principles_playbook.md` §2 物理量檢驗，發現這四道護城河保護的是**工具層**（金流代收、系統推播、AI 模板庫、電商開店），而非**物理量層**（具體的人、付錢的痛、手工交付、錢的管道）。走物理量的路，護城河根本不在路上。
+
+#### 四道護城河的繞行路徑
+
+| # | 護城河 | 持有者 | 保護的是什麼 | 物理量真正需要的 | v2.0 繞法 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **B1** | 金流代收合規 | Stripe / 金管會 | 「平台代使用者收款」 | 「使用者自己能收到錢」 | **不代收。** 教使用者自開 Lemon Squeezy / Stripe（10 分鐘）。FirstDollar 碰流程不碰錢。零法規門檻 |
+| **B2** | LINE 生態封閉 | LINE | 「系統主動 ping 使用者」的通路 | 「外部紀律讓使用者不棄坑」 | **PM 個人 LINE 私訊。** 前 50 人不需要 OA、不需要 Messaging API、不需要推播費用。對話品質反而更高 |
+| **B3** | Offer 模板資料飛輪 | 自身冷啟動 | 「什麼 offer 賣得動」的 AI 推薦 | 使用者知道「下一步做什麼」 | **PM 就是推薦引擎。** 前 50 個 Sprint 手動看受眾資料、手動給建議。累積 pattern 後才系統化為 Offer Vault |
+| **B4** | 台灣電商 SaaS | 91APP / Shopline | 「已經在賣東西的人」的全套工具 | 「還沒開始賣的人」踏出第一步 | **不搶已有店的人。** 91APP 是開店工具，FirstDollar 是「決定要不要開店」的紀律。不同 JTBD |
+
+#### 繞行策略的壓力測試（S2）
+
+| 假設 | 壓測問題 | 結論 |
+| :--- | :--- | :--- |
+| 使用者自開 Lemon Squeezy 就能收款 | 淑芬（非技術）能自己開嗎？ | Phase 0 先服務有基本技術能力的 persona；淑芬延至 Phase 1 |
+| PM 親自 ping 前 50 人 | 50 人 × 5 分鐘/天 = 250 分鐘/天，能 scale 嗎？ | 不能 scale，但不需要。Phase 0 目標是驗證 25% 成功率，不是服務 1000 人 |
+| PM 手動給 offer 建議 | 如果 PM 比 AI 準，AI 版本就不是核心價值？ | 正確。真正驗證的是「有人逼你、陪你跑 7 天」這件事本身有沒有用。技術只是放大器 |
+| 不碰錢就無法追蹤 Revenue Ground Truth | 長期 M2 護城河還能建嗎？ | Phase 0 由 PM 人工確認（截圖 / 對話）。Phase 1 再接 Stripe webhook。資料護城河延後但不放棄 |
+
+#### 繞行策略的「回到正面」觸發條件
+
+Phase 0 驗證成功後，依序恢復正面建設：
+
+| 觸發條件 | 恢復動作 | 對應護城河 |
+| :--- | :--- | :--- |
+| ≥ 6 個成功 Sprint + 穩定 pattern | 建 Offer Vault、開始系統化 | M1 |
+| 50+ 活躍使用者、PM 時間不夠 ping | 申請 LINE OA、建系統推播 | M4 |
+| 100+ 使用者、有 Stripe 串接需求 | 評估 Stripe Connect / TapPay 商戶申請 | M2 |
+| 品牌認知建立、有創作者主動聯繫 | 啟動 Creator Partnership | M5 |
+
 ---
 
 ## 3. 產品迭代飛輪（Flywheel）
@@ -150,9 +185,10 @@ context 更豐富
 
 | 階段 | 主飛輪 | 支援飛輪 | 放棄 |
 | :--- | :--- | :--- | :--- |
-| **MVP（0-3 月）** | C（Co-founder Memory） | A（Success Story 手動運營） | B 先記錄不推理 |
-| **PMF 驗證（3-6 月）** | A + C | 開始 seed B | — |
-| **規模化（6-12 月）** | **B（Offer Vault）** | A + C | — |
+| **Phase 0（0-1 月）手工驗證** | **Human Sprint Flywheel**（PM 陪跑 → 學 pattern → 下次更有效 → 口碑） | A（手動成功案例分享） | B + C 不啟動 |
+| **Phase 1 MVP（1-4 月）** | C（Co-founder Memory） | A（Success Story 手動運營） | B 先記錄不推理 |
+| **PMF 驗證（4-7 月）** | A + C | 開始 seed B | — |
+| **規模化（7-12 月）** | **B（Offer Vault）** | A + C | — |
 | **成熟（12 月+）** | B | Revenue Ground Truth model | — |
 
 ### 3.3 飛輪的斷點風險
@@ -206,7 +242,20 @@ context 更豐富
 └────────────────────────────┘
 ```
 
-### 4.3 MVP 優先順序（對照 PRD）
+### 4.3 Phase 0 手工模組定義（v2.0 新增）
+
+> **原則**：Phase 0 的每個「模組」都是 PM 本人執行的動作，不是軟體。目的是用最低成本驗證「7-Day Sprint 陪跑能讓人收到第一筆錢」這個命題。
+
+| # | 手工模組 | PM 做什麼 | 工具 | 對應 Phase 1 軟體模組 |
+| :--- | :--- | :--- | :--- | :--- |
+| **H1** | 手工 Sprint 編排 | 用 Google Doc 模板為每位使用者排 Day 1–7 任務 | Google Doc | C1 Sprint Engine |
+| **H2** | 手工紀律層 | 每天 LINE 私訊 ping「今天做了嗎？卡哪裡？」+ 深度對話 | LINE 個人帳號 | C1 紀律層 + C5 Co-founder Memory |
+| **H3** | 手工 Offer 建議 | 看使用者貼來的留言/訊息，手動產出 3 個 offer 建議 | 人腦 + Google Doc | C3 Audience-to-Offer |
+| **H4** | 協助開收款連結 | 教使用者自己開 Lemon Squeezy，必要時螢幕共享 | Lemon Squeezy / Stripe（使用者帳戶） | C2 Landing & Checkout |
+| **H5** | 手工 Revenue 確認 | 問使用者「收到錢了嗎？」看截圖確認 | LINE 對話 | C4 Revenue Telemetry |
+| **H6** | 手工 Pattern 記錄 | 每個 Sprint 結束後記錄「什麼有效 / 什麼沒效」到 Notion | Notion | C6 Offer Vault |
+
+### 4.4 Phase 1 軟體模組優先順序（Phase 0 通過後）
 
 | 優先 | 模組 | 理由 |
 | :--- | :--- | :--- |
@@ -304,7 +353,20 @@ context 更豐富
 
 ---
 
-## 6. 整合優先級總表（依 MVP 交付日 2026-06-30 回推）
+## 6. 整合優先級總表（v2.0：Phase 0 + Phase 1）
+
+### 6.1 Phase 0 時間表（2026-04-09 起，4 週）
+
+| 時間點 | 必須完成 | 需要什麼 | 風險 |
+| :--- | :--- | :--- | :--- |
+| **Week 1** | 找到 3 位真人、準備 Google Doc Sprint 模板 | PM 的社群人脈 + Google Doc | 低（找不到人 = 命題本身有問題） |
+| **Week 2** | 第一批 3 人 Sprint 進行中、每天 LINE ping | PM 時間（~90 min/天） | 中（使用者棄坑） |
+| **Week 3** | 第一批結果評估 + 招募第二批 3 人（收 NT$500） | Lemon Squeezy（PM 自己收費用） | 低 |
+| **Week 4** | 6 人結果評估 → Go/Kill 決策 | PM 判斷 | **關鍵決策點** |
+
+**Phase 0 總成本：$0**（僅 PM 時間）
+
+### 6.2 Phase 1 時間表（Phase 0 通過後，依 2026-06-30 回推）
 
 | 時間點 | 必須完成 | Build/Buy/Partner | 風險 |
 | :--- | :--- | :--- | :--- |
@@ -314,7 +376,7 @@ context 更豐富
 | **Week 7–8** | C1 Sprint Engine + C3 Audience-to-Offer 輕量版（剪貼+CSV） | Build | 中 |
 | **Week 9–10** | C2 Landing Builder（5 模板）+ 串 C4 | Build | 中 |
 | **Week 11** | C5 Co-founder Memory（最小版）+ 紀律層推播 | Build | 中 |
-| **Week 12** | 法務審閱（承諾金 + 隱私條款）+ 10 位 Design Partner 招募完成 | Partner | **高**（法務時程不可控） |
+| **Week 12** | 法務審閱（承諾金 + 隱私條款）+ Design Partner 擴招 | Partner | **高**（法務時程不可控） |
 | **Week 13+** | Private Beta 啟動、C6 開始記錄資料（不推理） | Build + 運營 | — |
 
 ---
@@ -335,28 +397,39 @@ context 更豐富
 
 ## 8. 結論與下一步
 
-### 8.1 策略結論
+### 8.1 策略結論（v2.0 修正）
 
-> FirstDollar 的勝負不在產品功能，而在三個約束是否守得住：
+> FirstDollar 的勝負不在產品功能，而在四個約束是否守得住：
 >
 > 1. **North Star 只追 $**（別偷偷加註冊數指標）
 > 2. **禁止 idea score**（別被客戶要求動搖）
-> 3. **Offer Vault 的資料飛輪必須優先於功能擴張**（別急著加功能）
+> 3. **Phase 0 先驗證命題，不寫程式**（別掉進「先建系統再找客戶」的反模式）
+> 4. **繞護城河，不撞護城河**（別把基礎設施誤認成產品）
 
-### 8.2 下一步行動（48 小時內）
+### 8.2 下一步行動 — Phase 0 啟動（48 小時內）
 
-| # | 動作 | 負責 |
-| :--- | :--- | :--- |
-| 1 | 將本策略補遺提交 Product Lead 評審 | PM |
-| 2 | 啟動 LINE OA 商用帳號申請（Week 5–6 前必須完成） | PM + BD |
-| 3 | 啟動台灣法務諮詢（承諾金 + 隱私條款） | PM + Legal |
-| 4 | 列出前 10 位 Design Partner 候選名單 | PM |
-| 5 | 建立 Seed Offer 收集腳本與 30 份 seed 模板 | PM |
-| 6 | PRD `Q-001` ~ `Q-005` 決策會議排程 | PM |
+| # | 動作 | 負責 | 備註 |
+| :--- | :--- | :--- | :--- |
+| 1 | **找到 3 位真人**：從自己的社群中找到願意被陪跑 7 天的人 | PM | 不是 AI persona，是「現在就能打電話」的人 |
+| 2 | **準備 Google Doc Sprint 模板**：Day 1–7 任務卡 | PM | 基於 PRD 附錄 B，簡化為手工版 |
+| 3 | **自己開一個 Lemon Squeezy 帳戶**：測試流程，確認 10 分鐘可完成 | PM | 確保能教使用者操作 |
+| 4 | **定義 Phase 0 成功標準**：6 人中 ≥ 2 人收到首筆錢 = Go | PM | 寫入決策紀錄 |
+| 5 | PRD `Q-003` ~ `Q-005` 內部對齊（Q-001、Q-002 已在 Phase 0 層級解除） | PM | — |
+
+**刻意不做（Phase 0 期間）**：
+
+| 不做 | 理由（對應 playbook 反模式） |
+| :--- | :--- |
+| 不寫任何程式碼 | 反模式 C「技術自瀆」— 第一個付費客戶前不寫 code |
+| 不申請 LINE OA | 繞行策略 B2 — PM 個人 LINE 就夠 |
+| 不做法務諮詢 | Phase 0 不碰錢、不做承諾金，無法務風險 |
+| 不設計 UI / Landing | 反模式 B「PowerPoint 現實」— Google Doc 就是產品 |
+| 不選技術棧 | 反模式 C — Phase 0 沒有技術棧 |
 
 ---
 
-**文件版本：** v1.0（草稿）
-**建立日期：** 2026-04-09
-**配套：** PRD v1.0（`firstdollar_prd.md`）
-**審核需求：** Product Lead、Legal、Lead Engineer、UX Lead
+**文件版本：** v2.0（草稿）
+**建立日期：** 2026-04-09 ｜ **v2.0 更新：** 2026-04-09
+**配套：** PRD v2.0（`firstdollar_prd.md`）
+**v2.0 變更摘要：** 新增 §2.5 護城河繞行策略、§4.3 Phase 0 手工模組、§6.1 Phase 0 時間表；修正飛輪優先級（Phase 0 = Human Sprint Flywheel）；修正下一步行動為 Phase 0 啟動清單
+**審核需求：** Product Lead（Phase 0 無需 Legal / Lead Engineer — 不碰錢、不寫 code）

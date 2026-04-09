@@ -1,6 +1,8 @@
 # 專案簡報與產品需求文件 (PRD) — FirstDollar（首單）
 
-> **版本：** v1.0 ｜ **更新：** 2026-04-09 ｜ **狀態：** 草稿（待產品負責人審核）
+> **版本：** v2.0 ｜ **更新：** 2026-04-09 ｜ **狀態：** 草稿（待產品負責人審核）
+>
+> **v2.0 重大變更：** 經 S1→F→S2 第一性原理壓力測試（見 `socratic_first_principles_rnd_workflow.md`），發現 v1.0 存在三處定義漂移（D1–D3），已全面修正 MVP 定義。詳見 §0.5。
 
 ---
 
@@ -54,6 +56,52 @@
 
 > **FirstDollar 是一個反 IdeaCheck 的 1 人公司執行陪跑平台。我們不打分數、不生報告；而是在 7 天內用真實受眾訪談、自動 landing page、waitlist 收集與 Stripe 金流串接，逼你拿到從 0→1 的第一個付費信號。**
 
+### 0.5 v2.0 定義漂移修正（S1→F→S2 壓力測試結果）
+
+> **背景**：v1.0 經 `socratic_first_principles_rnd_workflow.md` 的 S1→F→S2 管線壓力測試，發現三處與 `first_principles_playbook.md` §2 物理量矛盾的定義漂移。以下為修正紀錄。
+
+#### 三處定義漂移
+
+| # | 漂移 | 物理量要求 | v1.0 的偏離 | v2.0 修正 |
+| :--- | :--- | :--- | :--- | :--- |
+| **D1** | 把 AI 模擬的 persona 當真人 | 具體的人 = 有名字、能打電話給 3 位 | 5 個 persona 皆為 AI agent 模擬訪談產出 | **persona 降格為假設**，須用真人訪談驗證後才能作為設計依據 |
+| **D2** | 把「建系統」當「交付價值」 | 手工交付 = 今晚就做一次給 1 個人 | MVP 定義為 6 大軟體模組（Sprint Engine、Landing Builder 等） | **MVP 重定義為手工版**：PM 本人 = Sprint Engine + Co-founder + 紀律層 |
+| **D3** | 把「基礎設施」當「產品」 | 錢的管道 = 一條收款連結即可 | 需 Stripe Connect + TapPay 整合 + Revenue Telemetry | **不碰錢**：教使用者自行開 Lemon Squeezy / Stripe 帳戶（10 分鐘） |
+
+#### 繞過護城河策略（核心 v2.0 新增）
+
+v1.0 的 MVP 路徑會撞上四道既有市場護城河。v2.0 不打穿護城河，而是**走物理量的路，護城河保護的那條路根本不走**：
+
+| 護城河 | 誰建的 | v1.0 正面撞 | v2.0 繞法 |
+| :--- | :--- | :--- | :--- |
+| **金流代收合規**（Stripe Connect 審核 + 台灣金管會第三方支付登記） | Stripe / 金管會 | 平台代使用者收款 | **不代收。** 教使用者自己開帳戶。FirstDollar 碰流程不碰錢 |
+| **LINE 生態封閉**（OA 商用審核 + 推播成本 NT$0.2-0.5/則） | LINE | 系統推播紀律層 | **PM 個人 LINE 私訊。** 前 50 人不需要 OA |
+| **Offer 模板資料飛輪**（需 ~300 個有金流 Sprint 達 critical mass） | 自身冷啟動 | 需 AI 推薦引擎 | **PM 就是推薦引擎。** 前 50 個 Sprint 人工給建議，累積 pattern 後才系統化 |
+| **台灣電商 SaaS**（91APP / Shopline 全套開店工具） | 既有電商平台 | 搶「賣東西的人」 | **只搶「還沒開始賣的人」。** 不同 JTBD：決定要不要開店的紀律 ≠ 開店工具 |
+
+#### 重新定義的 MVP（Phase 0：手工驗證）
+
+| 維度 | v1.0 MVP | v2.0 Phase 0（手工版） |
+| :--- | :--- | :--- |
+| 產品形態 | 6 大軟體模組 | **一個人 + LINE 私訊 + Google Doc 模板** |
+| 金流 | Stripe Connect + TapPay | 使用者自行開 Lemon Squeezy（10 分鐘） |
+| 紀律層 | LINE OA + Messaging API | PM 每天親自私訊 ping |
+| Offer 推薦 | LLM API（$300-800/月） | PM 親自看受眾資料、手動給建議 |
+| 開發時間 | 12 週 | **本週末開始第一個 Sprint** |
+| 驗證成本 | ~$500-1,200/月 | **$0**（你的時間） |
+| 驗證目標 | 上線收費 | **6 人中 ≥ 2 人真的收到第一筆錢 → 命題成立** |
+
+**Phase 0 時間表**：
+
+| 週次 | 動作 | 過關條件 |
+| :--- | :--- | :--- |
+| Week 1 | 找到 3 個**真人**（不是 AI persona），免費陪跑 | 3 人同意進入 7-Day Sprint |
+| Week 2 | Google Doc 排任務 + 每天 LINE ping + 幫開 Lemon Squeezy | ≥ 1 人發布 landing + 收款連結 |
+| Week 3 | 第二批 3 人，**收費 NT$500** | 有人付費 = FirstDollar 自身的 First Dollar |
+| Week 4 | 6 人結果評估：≥ 2 人收到首筆錢 → Go；0 人 → Kill | 決策點 |
+
+**Phase 0 → Phase 1 的觸發條件**：Phase 0 驗證成功後，才進入 v1.0 定義的軟體 MVP 開發（見 §4）。Phase 1 的範圍依 Phase 0 學到的 pattern 重新定義。
+
 ---
 
 ## 1. 專案總覽
@@ -63,7 +111,7 @@
 | **專案名稱** | FirstDollar（首單）|
 | **Slug** | `firstdollar` |
 | **狀態** | 規劃中（PRD v1.0） |
-| **目標發布日期** | 2026-06-30（MVP Private Beta） |
+| **目標發布日期** | Phase 0：2026-04-30（手工驗證 4 週）｜ Phase 1：2026-06-30（軟體 MVP，Phase 0 通過後） |
 | **核心團隊** | PM: TBD ｜ Lead Engineer: TBD ｜ UX: TBD |
 | **一句話定位** | 不評估點子、只逼你在 7 天內拿到第一塊錢的 AI co-founder |
 | **North Star Metric** | $ / 週：使用者透過本平台收到的實際付款金額（不是註冊數、不是 DAU） |
@@ -76,8 +124,8 @@
 | :--- | :--- |
 | **背景與痛點** | 台灣與東亞市場有一批 wantrepreneur（indie hacker、電商賣家、Growth PM、創作者、顧問）累積 idea 卻無法 ship。現行 idea-validation SaaS（IdeaCheck、ShipYourIdea、IdeaBrowser）普遍被認為是「焦慮產品」— 交付報告而非結果。使用者真正的痛點是：(1) 不知道怎麼開始驗證、(2) 卡在 30-60% 棄坑、(3) 沒有分發能力、(4) 沒有外部紀律。 |
 | **策略契合度** | 承接 `ai_one_person_company_0to1_strategy.md` 的核心觀點：「1 人公司的勝負在把 需求 → 假設 → MVP → 付費驗證 做成一條可重複的流水線」。FirstDollar 就是這條流水線的可執行工具層。 |
-| **成功指標（Year 1）** | **主要**：Paying Customer 產生第一筆真實 revenue 的比例 ≥ 25%（相較於行業 2-3%）<br>**次要**：自家 MRR US$10k（month 6）/ US$25k（month 12）；退款率 < 8%；NPS ≥ 40 |
-| **差異化護城河** | (1) **North Star = 使用者的錢，不是自家 DAU**；(2) **反焦慮 UX**，禁止 idea score；(3) **外部紀律層**，主動 ping 與倒數；(4) **中文 / 台灣支付優先**（對比 ideacheck 表面 zh-Hant 但骨子 indie hacker 話術） |
+| **成功指標** | **Phase 0（4 週）**：6 人中 ≥ 2 人收到首筆真實付款（33%+ 成功率）<br>**Phase 1（Year 1）**：Paying Customer 產生第一筆真實 revenue 的比例 ≥ 25%（相較於行業 2-3%）<br>**次要**：自家 MRR US$10k（month 6）/ US$25k（month 12）；退款率 < 8%；NPS ≥ 40 |
+| **差異化護城河** | (1) **North Star = 使用者的錢，不是自家 DAU**；(2) **反焦慮 UX**，禁止 idea score；(3) **人肉紀律層**（Phase 0）→ 系統紀律層（Phase 1）；(4) **不碰錢、不建基礎設施** — 只做使用者自己做不到的事：紀律與陪跑 |
 
 ---
 
@@ -125,10 +173,10 @@
 
 | 項目 | 內容 |
 | :--- | :--- |
-| **MVP 功能範圍（≤ 3 個核心）** | 1. **7-Day Sprint Engine**（任務編排 + 每日推播 + 紀律層）<br>2. **Landing + Stripe 一鍵發布**（5 個模板 + TapPay 台灣金流）<br>3. **Audience-to-Offer**（受眾原始資料 → 3 個可賣的 offer） |
+| **Phase 0 範圍（手工驗證）** | 1. **PM 人肉 Sprint 陪跑**（Google Doc 任務模板 + LINE 私訊紀律）<br>2. **使用者自開收款連結**（Lemon Squeezy / Stripe 個人帳戶，PM 協助設定）<br>3. **PM 手動 Offer 建議**（看受眾原始資料後人工產出 3 個 offer）<br><br>**Phase 1 功能範圍（Phase 0 驗證通過後）**：<br>1. **7-Day Sprint Engine**（任務編排 + 每日推播 + 紀律層）<br>2. **Landing + Stripe 一鍵發布**（5 個模板 + TapPay 台灣金流）<br>3. **Audience-to-Offer**（受眾原始資料 → 3 個可賣的 offer） |
 | **非功能需求** | **性能**：Landing page 發布 TTFB < 200ms、LCP < 2s<br>**安全**：Stripe / TapPay webhook 全程 HMAC 驗證；使用者受眾資料預設不上雲訓練（呼應 David 訴求）<br>**可用性**：99.5% SLA（MVP 階段）；i18n zh-Hant 預設，en 次之<br>**SEO**：所有 landing page 採 Server Component + Structured Data（補 ideacheck 沒做的功課）<br>**無障礙**：WCAG AA；skip-link、ARIA landmarks 齊備 |
 | **不做什麼（救命清單）** | 1. **不做 idea scoring** — 這是本產品的 identity，任何 PM / engineer 提議加分數一律駁回<br>2. **不做 AI 生成 PRD / 商業計畫書** — 那是 David 眼中的「結構正確但缺 context 的廢話」<br>3. **不做 App（iOS/Android）** — Web-first，降低一人公司維運成本<br>4. **不做 B2B / Enterprise plan** — 焦點在 solo<br>5. **不做「100 個點子產生器」** — 使用者不缺點子<br>6. **不做訂閱綁約** — 淑芬訊號；影響信任<br>7. **不做 Discord / Slack bot 整合**（v1）— 延後<br>8. **不做模糊的 NPS / engagement 報告** — 只呈現 $ |
-| **假設與依賴** | **假設 1**：至少 25% 的活躍使用者願意在 7 天內公開發布 landing 並嘗試收款（**高風險，必須在 Private Beta 驗證**）<br>**假設 2**：台灣 solo wantrepreneur 的 willingness-to-pay 中位數能支撐 NT$690–1,490/月定價<br>**假設 3**：AI co-founder 的「紀律層」不會引發使用者反感（需 A/B 測試「主動 ping」強度）<br>**依賴**：Stripe、TapPay、Resend（email）、Supabase（auth + DB）、LLM 供應商（Claude / OpenAI） |
+| **假設與依賴** | **假設 1**：至少 25% 的活躍使用者願意在 7 天內公開發布 landing 並嘗試收款（**高風險，v1.0 為 AI 模擬結論，必須在 Phase 0 用真人驗證**）<br>**假設 2**：台灣 solo wantrepreneur 的 willingness-to-pay 中位數能支撐 NT$690–1,490/月定價<br>**假設 3**：「人肉紀律層」（PM 私訊 ping）的效果 ≥ 系統推播（Phase 0 驗證）<br>**Phase 0 依賴**：PM 本人的時間、LINE 個人帳號、Google Doc、Lemon Squeezy 免費帳戶<br>**Phase 1 依賴**：Stripe、TapPay、Resend（email）、Supabase（auth + DB）、LLM 供應商（Claude / OpenAI） |
 | **定價草案** | **Free**：1 次 Sprint 體驗（無紀律層、含本平台 branding）<br>**Pro** NT$690/月：unlimited Sprint、紀律層、5 個 landing 模板、台幣金流<br>**Coach** NT$1,490/月：+ AI co-founder 深度對話（有記憶）、承諾金機制、1v1 月度 office hour<br>**承諾**：皆可隨時停用、月付為主、年付 7 折 |
 
 ---
@@ -137,9 +185,9 @@
 
 | ID | 描述 | 狀態 | 負責人 |
 | :--- | :--- | :--- | :--- |
-| Q-001 | 「承諾金扣款」的法務風險（台灣金管會對預授權扣款 + 績效連動的灰色地帶）是否需要改為「捐款承諾」而非平台扣款？ | 待討論 | Legal / PM |
-| Q-002 | North Star Metric 要追蹤「使用者透過平台 landing 收到的 $」還是「使用者『聲稱』收到的 $」？前者受限於 Stripe 串接，後者有造假風險。 | 待討論 | PM |
-| Q-003 | Persona「淑芬」（非技術中年賣家）是 MVP TA 還是 v2 TA？若納入則 UI 與複本需大幅調整。 | 待討論 | PM / UX |
+| Q-001 | 「承諾金扣款」的法務風險 — **v2.0 決策：Phase 0 不做承諾金，延至 Phase 1 評估。** 手工版不涉及預授權扣款，法務風險歸零。 | Phase 0 解除 | PM |
+| Q-002 | North Star Metric 追蹤方式 — **v2.0 決策：Phase 0 由 PM 親自確認（看截圖 / 問使用者）。** 不需要 Stripe 串接，也不靠使用者自述。Phase 1 再接 webhook。 | Phase 0 解除 | PM |
+| Q-003 | Persona「淑芬」（非技術中年賣家）是 MVP TA 還是 v2 TA？ — **v2.0 建議：Phase 0 先服務有基本技術能力的 persona（阿傑/Vivian/Kai），淑芬延至 Phase 1。** 理由：自開 Lemon Squeezy 對淑芬可能是障礙。 | 建議決定 | PM / UX |
 | Q-004 | AI co-founder 的「兇一點」語氣要不要做語氣滑桿（禮貌 ↔ 嚴格）？Vivian 訊號要兇，但可能會傷到焦慮敏感用戶。 | 待討論 | UX / PM |
 | Q-005 | 是否接受單一使用者同時跑多條 Sprint？策略文件建議「同時最多跑 1–2 條產品線」，預設應鎖定 1 條。 | 待討論 | PM |
 | D-001 | **禁止渲染 idea score、health score 等抽象評分** — 這是產品 identity，不可妥協。 | 已決定 | PM |
@@ -194,7 +242,8 @@
 
 ---
 
-**文件版本：** v1.0（草稿）
-**建立日期：** 2026-04-09
+**文件版本：** v2.0（草稿）
+**建立日期：** 2026-04-09 ｜ **v2.0 更新：** 2026-04-09
 **作者：** PM (via AI-assisted multi-persona UX research workflow)
-**審核狀態：** 待 Product Lead / Design Lead / Legal 審閱（Q-001 ~ Q-005）
+**v2.0 變更摘要：** 經 S1→F→S2 第一性原理壓測，修正 D1–D3 定義漂移；新增 Phase 0 手工驗證階段；繞過金流代收 / LINE OA / Offer Vault / 電商 SaaS 四道護城河；Q-001、Q-002 在 Phase 0 層級解除
+**審核狀態：** 待 Product Lead / Design Lead 審閱（Q-003 ~ Q-005）
