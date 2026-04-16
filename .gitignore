@@ -5,6 +5,11 @@
 # Claude Code 個人設定
 .claude/settings.local.json
 
+# TaskMaster session 臨時狀態（每次 session 變動，不應納入版本控制）
+.claude/taskmaster-data/.session-snapshot
+.claude/taskmaster-data/.session-start
+.claude/taskmaster-data/timelog.jsonl
+
 # Node
 node_modules/
 
